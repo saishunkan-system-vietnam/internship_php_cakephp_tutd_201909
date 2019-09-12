@@ -99,7 +99,7 @@
   <component name="ProjectId" id="1QgO5wuwV28AVu14xAi6fwild1w" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../phpcake" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -126,7 +126,9 @@
       <workItem from="1568188593652" duration="5558000" />
       <workItem from="1568197365479" duration="714000" />
       <workItem from="1568199558397" duration="98000" />
-      <workItem from="1568222654263" duration="44000" />
+      <workItem from="1568251568516" duration="9584000" />
+      <workItem from="1568261585839" duration="84000" />
+      <workItem from="1568261687937" duration="12115000" />
     </task>
     <servers />
   </component>

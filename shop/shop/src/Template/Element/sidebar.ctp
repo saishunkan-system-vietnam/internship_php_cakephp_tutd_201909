@@ -27,8 +27,9 @@
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-home"></i> Quản trị viên <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="">Danh sách người dùng</a></li>
-                            <li><a href="">Thêm người dùng</a></li>
+                            <li><?php echo $this->Html->link('Danh sách quản trị viên',['action'=>'index'])?></li>
+<!--                            <li><a href="">Thêm người dùng</a></li>-->
+                            <li><?php echo $this->Html->link('Thêm quản trị viên',['action'=>'add'])?></li>
 
                         </ul>
                     </li>

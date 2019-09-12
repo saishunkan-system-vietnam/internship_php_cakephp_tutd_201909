@@ -49,21 +49,26 @@ Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/', function (RouteBuilder $routes) {
     // Register scoped middleware for in scopes.
-    $routes->registerMiddleware('csrf', new CsrfProtectionMiddleware([
-        'httpOnly' => true
-    ]));
-    $routes->applyMiddleware('csrf');
+//    $routes->registerMiddleware('csrf', new CsrfProtectionMiddleware([
+//        'httpOnly' => true
+//    ]));
+//    $routes->applyMiddleware('csrf');
 
     //Route:admin
 
-    Router::prefix('admin', function ($routes) {
-        $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);
-        $routes->connect('/users/add', ['controller' => 'Users', 'action' => 'add']);
-
-    });
+//    Router::prefix('admin', function ($routes) {
+//        $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);
+//        $routes->connect('/users/add', ['controller' => 'Users', 'action' => 'add']);
+//
+//    });
 
 //    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
 //    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    $routes->connect('admin/users', ['controller' => 'Users', 'action' => 'index']);
+    $routes->connect('admin/users/add', ['controller' => 'Users', 'action' => 'add']);
+    $routes->connect('admin/users/edit:id', ['controller' => 'Users', 'action' => 'edit']);
+
+
     $routes->fallbacks(DashedRoute::class);
 });
 
