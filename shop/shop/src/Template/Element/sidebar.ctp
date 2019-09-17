@@ -34,6 +34,18 @@
                         </ul>
                     </li>
                 </ul>
+
+
+                <ul class="nav side-menu">
+                    <li><a><i class="fa fa-desktop"></i> SideBar <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><?php echo $this->Html->link('Danh sách sidebar',['action'=>'index'])?></li>
+                            <!--                            <li><a href="">Thêm người dùng</a></li>-->
+                            <li><?php echo $this->Html->link('Thêm sidebar',['action'=>'add'])?></li>
+
+                        </ul>
+                    </li>
+                </ul>
             </div>
 
         </div>

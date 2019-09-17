@@ -34,26 +34,26 @@ $cakeDescription = 'Shop';
     <?= $this->fetch('script') ?>
 
     <!-- Bootstrap -->
-    <link href="<?php echo $this->request->webroot; ?>/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo SITE_URL; ?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="<?php echo $this->request->webroot; ?>/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo SITE_URL; ?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="<?php echo $this->request->webroot; ?>/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<?php echo SITE_URL; ?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="<?php echo $this->request->webroot; ?>/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="<?php echo SITE_URL; ?>vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
     <!-- bootstrap-progressbar -->
     <link
-        href="<?php echo $this->request->webroot; ?>/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css"
+        href="<?php echo SITE_URL; ?>vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css"
         rel="stylesheet">
     <!-- JQVMap -->
-    <link href="<?php echo $this->request->webroot; ?>/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="<?php echo SITE_URL; ?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="<?php echo $this->request->webroot; ?>/vendors/bootstrap-daterangepicker/daterangepicker.css"
+    <link href="<?php echo SITE_URL; ?>vendors/bootstrap-daterangepicker/daterangepicker.css"
           rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="<?php echo $this->request->webroot; ?>/build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo SITE_URL; ?>build/css/custom.min.css" rel="stylesheet">
 </head>
 <body class="nav-md">
 <div class="container body">
@@ -65,45 +65,45 @@ $cakeDescription = 'Shop';
     </div>
 </div>
 <!-- jQuery -->
-<script src="<?php echo $this->request->webroot; ?>/vendors/jquery/dist/jquery.min.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="<?php echo $this->request->webroot; ?>/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
-<script src="<?php echo $this->request->webroot; ?>/vendors/fastclick/lib/fastclick.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
-<script src="<?php echo $this->request->webroot; ?>/vendors/nprogress/nprogress.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/nprogress/nprogress.js"></script>
 <!-- Chart.js -->
-<script src="<?php echo $this->request->webroot; ?>/vendors/Chart.js/dist/Chart.min.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/Chart.js/dist/Chart.min.js"></script>
 <!-- gauge.js -->
-<script src="<?php echo $this->request->webroot; ?>/vendors/gauge.js/dist/gauge.min.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/gauge.js/dist/gauge.min.js"></script>
 <!-- bootstrap-progressbar -->
 <script
-    src="<?php echo $this->request->webroot; ?>/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    src="<?php echo SITE_URL; ?>vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
 <!-- iCheck -->
-<script src="<?php echo $this->request->webroot; ?>/vendors/iCheck/icheck.min.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/iCheck/icheck.min.js"></script>
 <!-- Skycons -->
-<script src="<?php echo $this->request->webroot; ?>/vendors/skycons/skycons.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/skycons/skycons.js"></script>
 <!-- Flot -->
-<script src="<?php echo $this->request->webroot; ?>/vendors/Flot/jquery.flot.js"></script>
-<script src="<?php echo $this->request->webroot; ?>/vendors/Flot/jquery.flot.pie.js"></script>
-<script src="<?php echo $this->request->webroot; ?>/vendors/Flot/jquery.flot.time.js"></script>
-<script src="<?php echo $this->request->webroot; ?>/vendors/Flot/jquery.flot.stack.js"></script>
-<script src="<?php echo $this->request->webroot; ?>/vendors/Flot/jquery.flot.resize.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/Flot/jquery.flot.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/Flot/jquery.flot.pie.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/Flot/jquery.flot.time.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/Flot/jquery.flot.stack.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/Flot/jquery.flot.resize.js"></script>
 <!-- Flot plugins -->
-<script src="<?php echo $this->request->webroot; ?>/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-<script src="<?php echo $this->request->webroot; ?>/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-<script src="<?php echo $this->request->webroot; ?>/vendors/flot.curvedlines/curvedLines.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/flot.curvedlines/curvedLines.js"></script>
 <!-- DateJS -->
-<script src="<?php echo $this->request->webroot; ?>/vendors/DateJS/build/date.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/DateJS/build/date.js"></script>
 <!-- JQVMap -->
-<script src="<?php echo $this->request->webroot; ?>/vendors/jqvmap/dist/jquery.vmap.js"></script>
-<script src="<?php echo $this->request->webroot; ?>/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-<script src="<?php echo $this->request->webroot; ?>/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/jqvmap/dist/jquery.vmap.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
 <!-- bootstrap-daterangepicker -->
-<script src="<?php echo $this->request->webroot; ?>/vendors/moment/min/moment.min.js"></script>
-<script src="<?php echo $this->request->webroot; ?>/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/moment/min/moment.min.js"></script>
+<script src="<?php echo SITE_URL; ?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
 <!-- Custom Theme Scripts -->
-<script src="<?php echo $this->request->webroot; ?>/build/js/custom.min.js"></script>
+<script src="<?php echo SITE_URL; ?>build/js/custom.min.js"></script>
 </body>
 </html>

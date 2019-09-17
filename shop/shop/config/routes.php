@@ -66,7 +66,12 @@ Router::scope('/', function (RouteBuilder $routes) {
 //    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
     $routes->connect('admin/users', ['controller' => 'Users', 'action' => 'index']);
     $routes->connect('admin/users/add', ['controller' => 'Users', 'action' => 'add']);
-    $routes->connect('admin/users/edit:id', ['controller' => 'Users', 'action' => 'edit']);
+    $routes->connect('admin/users/edit/:id', ['controller' => 'Users', 'action' => 'edit']);
+    $routes->connect('admin/users/delete/:id', ['controller' => 'Users', 'action' => 'delete']);
+    $routes->connect('admin/search',['controller'=>'Users','action'=>'register']);
+    $routes->connect('/users/register', ['controller' => 'Users', 'action' => 'delete']);
+    $routes->connect('login',['controller'=>'Users','action'=>'login']);
+    $routes->connect('/users/verification', ['controller' => 'Users', 'action' => 'verification']);
 
 
     $routes->fallbacks(DashedRoute::class);

@@ -12,8 +12,10 @@
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
+use App\Model\Table\UsersTable;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 
@@ -45,6 +47,20 @@ class AppController extends Controller
             'enableBeforeRedirect' => false,
         ]);
         $this->loadComponent('Flash');
+//        $this->loadComponent('Auth', [
+//            'authenticate' => [
+//                'Form' => [
+//                    'fields' => [
+//                        'username' => 'email',
+//                        'password' => 'password',
+//                    ]
+//                ]
+//            ],
+//            'loginAction' => [
+//                'controller' => 'Users',
+//                'action'=>'login',
+//            ],
+//        ]);
 
         /*
          * Enable the following component for recommended CakePHP security settings.
