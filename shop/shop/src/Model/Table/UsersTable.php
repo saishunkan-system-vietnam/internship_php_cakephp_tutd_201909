@@ -93,47 +93,7 @@ class UsersTable extends Table
             ->allowEmptyDate('modifind');
 
         return $validator;
-//        $validator
-//            ->requirePresence("username", "create", "Name field should be need")
-//            ->notEmptyString('username')
-//            ->add("username", [
-//                "minlength" => [
-//                    "rule" => ["minLength", 1],
-//                    "message" => "Username khong duoc nho hon 2 ki tu",
-//                ],
-//                "maxlength" => [
-//                    "rule" => ["maxLength", 200],
-//                    "message" => "Username nhỏ hơn 100 ki tự",
-//                ]
-//            ]);
-//
-//        $validator
-//            ->requirePresence("addr", "create", "addr field should be need")
-//            ->notEmptyString('addr')
-//            ->add("password", [
-//                "minlength" => [
-//                    "rule" => ["minLength", 1],
-//                    "message" => "Pass khong duoc nho hon 2 ki tu",
-//                ],
-//                "maxlength" => [
-//                    "rule" => ["maxLength", 200],
-//                    "message" => "Pass nhỏ hơn 100 ki tự",
-//                ]
-//            ]);
-//
-//        $validator
-//            ->requirePresence("phone", "create", "phone field should be need")
-//            ->notEmptyString('phone')
-//            ->add("phone", [
-//                "minlength" => [
-//                    "rule" => ["minLength", 1],
-//                    "message" => "Pass khong duoc nho hon 2 ki tu",
-//                ],
-//                "maxlength" => [
-//                    "rule" => ["maxLength", 200],
-//                    "message" => "Pass nhỏ hơn 100 ki tự",
-//                ]
-//            ]);
+
     }
 
     /**

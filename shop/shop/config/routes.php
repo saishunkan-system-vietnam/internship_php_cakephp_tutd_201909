@@ -64,14 +64,27 @@ Router::scope('/', function (RouteBuilder $routes) {
 
 //    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
 //    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+
+   //admin/users/..................
+
     $routes->connect('admin/users', ['controller' => 'Users', 'action' => 'index']);
     $routes->connect('admin/users/add', ['controller' => 'Users', 'action' => 'add']);
     $routes->connect('admin/users/edit/:id', ['controller' => 'Users', 'action' => 'edit']);
     $routes->connect('admin/users/delete/:id', ['controller' => 'Users', 'action' => 'delete']);
-    $routes->connect('admin/search',['controller'=>'Users','action'=>'register']);
+    $routes->connect('admin/search',['controller'=>'Users','action'=>'search']);
     $routes->connect('/users/register', ['controller' => 'Users', 'action' => 'delete']);
     $routes->connect('login',['controller'=>'Users','action'=>'login']);
     $routes->connect('/users/verification', ['controller' => 'Users', 'action' => 'verification']);
+
+    //admin/sidebar/...................
+
+    $routes->connect('admin/slider',['controller'=>'Slider','action'=>'index']);
+    $routes->connect('admin/slider/add',['controller'=>'Slider','action'=>'add']);
+    $routes->connect('admin/slider/edit/:id',['controller'=>'Slider','action'=>'edit']);
+    $routes->connect('admin/slider/delete/:id',['controller'=>'Slider','action'=>'delete']);
+    $routes->connect('admin/slider',['controller'=>'Slider','action'=>'search']);
+
+    //........................................
 
 
     $routes->fallbacks(DashedRoute::class);

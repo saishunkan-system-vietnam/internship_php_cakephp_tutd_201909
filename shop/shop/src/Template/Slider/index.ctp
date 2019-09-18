@@ -1,7 +1,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Danh sách quản trị viên</h2>
+            <h2>Danh sách slider</h2>
             <ul class="nav navbar-right panel_toolbox">
             </ul>
             <div class="clearfix"></div>
@@ -11,7 +11,7 @@
                 <form method="post">
                     <p>
                         <button type="submit"
-                                formaction="<?php echo $this->Url->build(['action' => 'deleteselected']); ?>"
+                                formaction="<?php echo $this->Url->build(['controller' => 'Slider', 'action' => 'deleteselected']); ?>"
                                 class="btn btn-danger">Delete Selected
                         </button>
                     </p>
@@ -23,10 +23,10 @@
                             <input type="checkbox" id="check-all" class="flat selectall">
                         </th>
                         <th class="column-title">Id</th>
-                        <th class="column-title">Username</th>
-                        <th class="column-title">Phone</th>
-                        <th class="column-title">Address</th>
-                        <th class="column-title">Email</th>
+                        <th class="column-title">Name</th>
+                        <th class="column-title">Link</th>
+                        <th class="column-title">Image</th>
+                        <th class="column-title">Status</th>
                         <th class="column-title no-link last"><span class="nobr">Action</span>
                         </th>
                         <th class="bulk-actions" colspan="7">
@@ -37,26 +37,30 @@
                     </thead>
                     <tbody>
                     <?php
-                    foreach ($users as $user):
+                    foreach ($slider as $slider):
                         ?>
+
                         <tr class="even pointer">
                             <td class="a-center ">
                                 <input type="checkbox" class="flat selectbox" name="ids[]"
-                                       value="<?php echo $user->id ?>">
+                                       value="<?php echo $slider->id ?>">
                             </td>
-                            <td class=" "><?php echo $user->id; ?></td>
-                            <td class=" "><?php echo $user->username; ?></td>
-                            <td class=" "><?php echo $user->phone; ?></i></td>
-                            <td class=" "><?php echo $user->addr; ?></td>
-                            <td class=" "><?php echo $user->email; ?></td>
+                            <td class=""><?php echo $slider->id; ?></td>
+                            <td class=""><?php echo $slider->name; ?></td>
+                            <td class=""><?php echo $slider->link; ?></i></td>
 
+                            <td><img src="<?php echo $slider->image; ?>" style="width: 60px;height: 60px"></td>
+                            <td class="">
+                                <?php if ($slider->status == 0): ?>
+                                    <span style="color: red">Ân</span>
+                                <?php else: ?>
+                                    <span style="color: green">Hiển</span>
+                                <?php endif; ?>
+
+                            </td>
                             <td class=" last">
-                                <a href="/shop/shop/admin/users/edit/<?= $user->id ?>">Edit | </a>
-                                <!--                                <button type="submit" formaction="-->
-                                <?php //echo $this->Url->build(['action'=>'delete',$user->id]);
-                                ?><!--" class="btn btn-danger" onclick="return confirm('Ban muon xoa')">Delete Selected</button>-->
-
-                                <a href="/shop/shop/admin/users/delete/<?= $user->id ?>"
+                                <a href="/admin/slider/edit/<?= $slider->id ?>">Edit | </a>
+                                <a href="/admin/slider/delete/<?= $slider->id ?>"
                                    onclick="return confirm('Bạn có chắc chăn muốn xóa')">Delete</a>
 
                             </td>
