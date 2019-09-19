@@ -128,7 +128,7 @@ class UsersTable extends Table
 
     }
     /**
-     * Returns a rules checker object that will be used for validating
+     * Returns a rules checker object that will be used for valida
      * application integrity.
      *
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
