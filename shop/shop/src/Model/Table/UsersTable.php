@@ -52,24 +52,58 @@ class UsersTable extends Table
         $validator
             ->integer('id')
             ->allowEmptyString('id', null, 'create');
-
         $validator
             ->scalar('username')
             ->maxLength('username', 255)
             ->requirePresence('username', 'create')
             ->notEmptyString('username');
-
         $validator
             ->scalar('password')
             ->maxLength('password', 255)
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
-
         $validator
             ->integer('phone')
             ->requirePresence('phone', 'create')
             ->notEmptyString('phone');
-
+        $validator
+            ->scalar('addr')
+            ->maxLength('addr', 255)
+            ->requirePresence('addr', 'create')
+            ->notEmptyString('addr');
+        $validator
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmptyString('email');
+        $validator
+            ->add('confirm_password', 'no-misspelling', [
+                'rule' => ['compareWith', 'password'],
+                'message' => 'Passwords are not equal',
+            ]);
+        $validator
+            ->date('modifind')
+            ->allowEmptyDate('modifind');
+        return $validator;
+    }
+    public function validationUpdateEdit($validator)
+    {
+        $validator
+            ->integer('id')
+            ->allowEmptyString('id', null, 'create');
+        $validator
+            ->scalar('username')
+            ->maxLength('username', 255)
+            ->requirePresence('username', 'create')
+            ->notEmptyString('username');
+        $validator
+            ->scalar('password')
+            ->maxLength('password', 255)
+            ->requirePresence('password', 'create')
+            ->notEmptyString('password');
+        $validator
+            ->integer('phone')
+            ->requirePresence('phone', 'create')
+            ->notEmptyString('phone');
         $validator
             ->scalar('addr')
             ->maxLength('addr', 255)
@@ -86,8 +120,6 @@ class UsersTable extends Table
                 'rule' => ['compareWith', 'password'],
                 'message' => 'Passwords are not equal',
             ]);
-
-
         $validator
             ->date('modifind')
             ->allowEmptyDate('modifind');
@@ -95,7 +127,6 @@ class UsersTable extends Table
         return $validator;
 
     }
-
     /**
      * Returns a rules checker object that will be used for validating
      * application integrity.

@@ -27,9 +27,9 @@
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-home"></i> Quản trị viên <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><?php echo $this->Html->link('Danh sách quản trị viên',['action'=>'index'])?></li>
+                            <li><?php echo $this->Html->link('Danh sách quản trị viên',['controller'=>'Users','action'=>'index'])?></li>
 <!--                            <li><a href="">Thêm người dùng</a></li>-->
-                            <li><?php echo $this->Html->link('Thêm quản trị viên',['action'=>'add'])?></li>
+                            <li><?php echo $this->Html->link('Thêm quản trị viên',['controller'=>'Users','action'=>'add'])?></li>
 
                         </ul>
                     </li>
@@ -42,10 +42,60 @@
                             <li><?php echo $this->Html->link('Danh sách slider',['controller'=>'Slider','action'=>'index'])?></li>
                             <!--                            <li><a href="">Thêm người dùng</a></li>-->
                             <li><?php echo $this->Html->link('Thêm slider',['controller'=>'Slider','action'=>'add'])?></li>
-
                         </ul>
                     </li>
                 </ul>
+
+                <ul class="nav side-menu">
+                    <li><a><i class="glyphicon glyphicon-th-list""></i> Comment <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><?php echo $this->Html->link('Danh sách comment',['controller'=>'Comment','action'=>'index'])?></li>
+                            <!--                            <li><a href="">Thêm người dùng</a></li>-->
+                            <li><?php echo $this->Html->link('Thêm comment',['controller'=>'Comment','action'=>'add'])?></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav side-menu">
+                    <li><a><i class="glyphicon glyphicon-envelope"></i> Contatct <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><?php echo $this->Html->link('Danh sách contact',['controller'=>'Contact','action'=>'index'])?></li>
+                            <!--                            <li><a href="">Thêm người dùng</a></li>-->
+                            <li><?php echo $this->Html->link('Thêm contact',['controller'=>'Contact','action'=>'add'])?></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav side-menu">
+                    <li><a><i class="glyphicon glyphicon-user"></i> About <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><?php echo $this->Html->link('Danh sách about',['controller'=>'About','action'=>'index'])?></li>
+                            <!--                            <li><a href="">Thêm người dùng</a></li>-->
+                            <li><?php echo $this->Html->link('Thêm about',['controller'=>'About','action'=>'add'])?></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav side-menu">
+                    <li><a><i class="glyphicon glyphicon-star"></i> Team <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><?php echo $this->Html->link('Danh sách team',['controller'=>'Team','action'=>'index'])?></li>
+                            <!--                            <li><a href="">Thêm người dùng</a></li>-->
+                            <li><?php echo $this->Html->link('Thêm team',['controller'=>'Team','action'=>'add'])?></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav side-menu">
+                    <li><a><i class="glyphicon glyphicon-hand-up"></i> Top_Brands <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><?php echo $this->Html->link('Danh sách top_brands',['controller'=>'TopBrands','action'=>'index'])?></li>
+                            <!--                            <li><a href="">Thêm người dùng</a></li>-->
+                            <li><?php echo $this->Html->link('Thêm top_brands',['controller'=>'TopBrands','action'=>'add'])?></li>
+                        </ul>
+                    </li>
+                </ul>
+
             </div>
 
         </div>

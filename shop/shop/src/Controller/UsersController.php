@@ -49,7 +49,7 @@ class UsersController extends AppController
             if ($this->Users->save($user)) {
                 return $this->redirect(['action' => 'index']);
             } else {
-                $error = $user->errors();
+                $error = $user->getErrors();
                 $this->set('err', $error);
             }
 
@@ -67,7 +67,7 @@ class UsersController extends AppController
             $input['password'] = $this->getRequest()->getData('password');
             $input['phone'] = $this->getRequest()->getData('phone');
             $input['addr'] = $this->getRequest()->getData('addr');
-            $this->Users->patchEntity($user, $input);
+            $this->Users->patchEntity($user, $input,['validate' => 'UpdateEdit']);
             if ($this->Users->save($user)) {
                 return $this->redirect(['action' => 'index']);
             } else {
@@ -82,7 +82,7 @@ class UsersController extends AppController
         $id = $this->request->getParam('id');
         $user = $this->Users->get($id);
         $this->Users->delete($user);
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller'=>'Users','action' => 'index']);
     }
 
     public function search()

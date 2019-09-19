@@ -5,7 +5,8 @@
             <ul class="nav navbar-right panel_toolbox">
             </ul>
             <div class="title_right">
-                <form action="<?php echo $this->Url->build(['controller'=>'Slider','action'=>'search'])?>" method="get">
+                <form action="<?php echo $this->Url->build(['controller' => 'Slider', 'action' => 'search']) ?>"
+                      method="get">
                     <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                         <div class="input-group">
                             <input type="search" class="form-control" placeholder="Search for..." name="q">
@@ -19,6 +20,7 @@
             </div>
             <div class="clearfix"></div>
         </div>
+
         <div class="x_content">
             <div class="table-responsive">
                 <form method="post">
@@ -38,7 +40,6 @@
                         <th class="column-title">Id</th>
                         <th class="column-title">Name</th>
                         <th class="column-title">Link</th>
-                        <th class="column-title">Text</th>
                         <th class="column-title">Image</th>
                         <th class="column-title">Status</th>
                         <th class="column-title no-link last"><span class="nobr">Action</span>
@@ -62,7 +63,7 @@
                             <td class=""><?php echo $slider->id; ?></td>
                             <td class=""><?php echo $slider->name; ?></td>
                             <td class=""><?php echo $slider->link; ?></i></td>
-                            <td class=""><?php echo $slider->text; ?></i></td>
+
                             <td><img src="<?php echo $slider->image; ?>" style="width: 60px;height: 60px"></td>
                             <td class="">
                                 <?php if ($slider->status == 0): ?>
@@ -70,11 +71,13 @@
                                 <?php else: ?>
                                     <span style="color: green">Hiển</span>
                                 <?php endif; ?>
+
                             </td>
                             <td class=" last">
                                 <a href="/admin/slider/edit/<?= $slider->id ?>">Edit | </a>
                                 <a href="/admin/slider/delete/<?= $slider->id ?>"
                                    onclick="return confirm('Bạn có chắc chăn muốn xóa')">Delete</a>
+
                             </td>
                         </tr>
                     <?php

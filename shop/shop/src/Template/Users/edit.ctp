@@ -2,22 +2,17 @@
 <div class="right_col" style="margin: auto" role="main">
     <div class="">
         <div class="page-title">
-
         </div>
         <div class="clearfix"></div>
-
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title" style="text-align: center">
                         <h2 style="text-align: center">Thêm danh sách quản trị viên</h2>
-
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-
                         <form class="form-horizontal form-label-left" novalidate method="POST" action="">
-
 
                             <div class="item form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Username <span

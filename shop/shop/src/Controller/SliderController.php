@@ -35,39 +35,76 @@ class SliderController extends AppController
         if ($this->request->is('post')) {
             $uploaded_path = "/img/upload";
             $tmp_name = $this->request->getData()['file']['tmp_name'];
-//            dd($tmp_name);
             $image_name = $this->request->getData()['file']['name'];
-            $setNewFileName = time() . "_" . rand(000000, 999999);
-//            dd($image_name);
-            if (move_uploaded_file($tmp_name, WWW_ROOT . $uploaded_path . "/" . $setNewFileName . $image_name)) {
-
-                $input['name'] = $this->getRequest()->getData('name');
-                $input['link'] = $this->getRequest()->getData('link');
-                $input['text'] = $this->getRequest()->getData('text');
-                $input['status'] = $this->getRequest()->getData('status');
-                $slider->image = $uploaded_path . "/" . $image_name;
-                $this->Slider->patchEntity($slider, $input);
-//                dd($slider);
-                if ($this->Slider->save($slider)) {
-
-                    $this->set(compact('slider'));
-                    return $this->redirect(['controller' => 'Slider', 'action' => 'index']);
-                } else {
-                    $error = $slider->errors();
-                    $this->set('err', $error);
-                }
+            $setNewFileName = time() . "_" . rand(000000, 999999) . $image_name;
+            $input['name'] = $this->getRequest()->getData('name');
+            $input['link'] = $this->getRequest()->getData('link');
+            $input['text'] = $this->getRequest()->getData('text');
+            $input['status'] = $this->getRequest()->getData('status');
+            if (move_uploaded_file($tmp_name, WWW_ROOT . $uploaded_path . "/" . $setNewFileName)) {
+                $slider->image = $uploaded_path . "/" . $setNewFileName;
             }
-            $this->set(compact('slider'));
+            $this->Slider->patchEntity($slider, $input);
+            if ($this->Slider->save($slider)) {
+                $this->set(compact('slider'));
+                return $this->redirect(['controller' => 'Slider', 'action' => 'index']);
+            } else {
+                $error = $slider->getErrors();
+                $this->set('err', $error);
+            }
         }
+        $this->set(compact('slider'));
     }
 
     public function edit()
     {
+        $id = $this->request->getParam('id');
+        $slider = $this->Slider->get($id);
+        $this->set('slider', $slider);
+        if ($this->request->is('post')) {
+            $uploaded_path = "/img/upload";
+            $tmp_name = $this->request->getData()['file']['tmp_name'];
+            $image_name = $this->request->getData()['file']['name'];
+            $setNewFileName = time() . "_" . rand(000000, 999999) . $image_name;
+            $input['name'] = $this->getRequest()->getData('name');
+            $input['link'] = $this->getRequest()->getData('link');
+            $input['text'] = $this->getRequest()->getData('text');
+            $input['status'] = $this->getRequest()->getData('status');
 
+            if (move_uploaded_file($tmp_name, WWW_ROOT . $uploaded_path . "/" . $setNewFileName)) {
+
+                $slider->image = $uploaded_path . "/" . $setNewFileName;
+            }
+            $this->Slider->patchEntity($slider, $input,['validate' => 'update']);
+            if ($this->Slider->save($slider)) {
+                $this->set(compact('slider'));
+                return $this->redirect(['controller' => 'Slider', 'action' => 'index']);
+            } else {
+                $error = $slider->getErrors();
+                $this->set('err', $error);
+            }
+        }
+        $this->set(compact('slider'));
     }
 
     public function delete()
     {
+        $id = $this->request->getParam('id');
+        $slider = $this->Slider->get($id);
+        $this->Slider->delete($slider);
+        return $this->redirect(['controller' => 'Slider', 'action' => 'index']);
+    }
 
+    public function search()
+    {
+        $search = $this->request->getQuery('q');
+        $this->paginate = [
+            'limit' => '3'
+        ];
+        $slider = $this->paginate($this->Slider->find()->where(function ($exp, $query) use ($search) {
+            return $exp->like('name', '%' . $search . '%');
+        }));
+        $this->set('slider', $slider);
+        $this->set('search', $search);
     }
 }

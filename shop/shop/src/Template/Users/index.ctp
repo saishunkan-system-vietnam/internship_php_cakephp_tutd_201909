@@ -4,6 +4,19 @@
             <h2>Danh sách quản trị viên</h2>
             <ul class="nav navbar-right panel_toolbox">
             </ul>
+            <div class="title_right">
+                <form action="<?php echo $this->Url->build(['controller' => 'Users', 'action' => 'search']) ?>"
+                      method="get">
+                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="Search for..." name="q">
+                            <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -51,12 +64,12 @@
                             <td class=" "><?php echo $user->email; ?></td>
 
                             <td class=" last">
-                                <a href="/shop/shop/admin/users/edit/<?= $user->id ?>">Edit | </a>
+                                <a href="/admin/users/edit/<?= $user->id ?>">Edit | </a>
                                 <!--                                <button type="submit" formaction="-->
                                 <?php //echo $this->Url->build(['action'=>'delete',$user->id]);
                                 ?><!--" class="btn btn-danger" onclick="return confirm('Ban muon xoa')">Delete Selected</button>-->
 
-                                <a href="/shop/shop/admin/users/delete/<?= $user->id ?>"
+                                <a href="/admin/users/delete/<?= $user->id ?>"
                                    onclick="return confirm('Bạn có chắc chăn muốn xóa')">Delete</a>
 
                             </td>

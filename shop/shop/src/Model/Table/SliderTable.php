@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -65,8 +66,8 @@ class SliderTable extends Table
 
         $validator
             ->scalar('image')
-            ->maxLength('image', 255)
-            ;
+            ->maxLength('image', 255)//            ->requirePresence('image', 'create')
+        ;
 
         $validator
             ->scalar('text')
@@ -74,8 +75,39 @@ class SliderTable extends Table
             ->requirePresence('text', 'create')
             ->notEmptyString('text');
 
+        return $validator;
+    }
 
+    public function validationUpdate($validator)
+    {
+        $validator
+            ->integer('id')
+            ->allowEmptyString('id', null, 'create');
+
+        $validator
+            ->scalar('name')
+            ->maxLength('name', 255)
+            ->requirePresence('name', 'create')
+            ->notEmptyString('name');
+
+        $validator
+            ->scalar('link')
+            ->maxLength('link', 255)
+            ->requirePresence('link', 'create')
+            ->notEmptyString('link');
+
+        $validator
+            ->scalar('image')
+            ->maxLength('image', 255)//            ->requirePresence('image', 'create')
+        ;
+
+        $validator
+            ->scalar('text')
+            ->maxLength('text', 255)
+            ->requirePresence('text', 'create')
+            ->notEmptyString('text');
 
         return $validator;
     }
+
 }

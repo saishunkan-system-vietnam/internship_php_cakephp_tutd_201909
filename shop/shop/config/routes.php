@@ -65,26 +65,61 @@ Router::scope('/', function (RouteBuilder $routes) {
 //    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
 //    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
-   //admin/users/..................
+    //admin/users/..................
 
     $routes->connect('admin/users', ['controller' => 'Users', 'action' => 'index']);
     $routes->connect('admin/users/add', ['controller' => 'Users', 'action' => 'add']);
     $routes->connect('admin/users/edit/:id', ['controller' => 'Users', 'action' => 'edit']);
     $routes->connect('admin/users/delete/:id', ['controller' => 'Users', 'action' => 'delete']);
-    $routes->connect('admin/search',['controller'=>'Users','action'=>'search']);
+    $routes->connect('admin/users/search', ['controller' => 'Users', 'action' => 'search']);
     $routes->connect('/users/register', ['controller' => 'Users', 'action' => 'delete']);
-    $routes->connect('login',['controller'=>'Users','action'=>'login']);
+    $routes->connect('login', ['controller' => 'Users', 'action' => 'login']);
     $routes->connect('/users/verification', ['controller' => 'Users', 'action' => 'verification']);
 
     //admin/sidebar/...................
 
-    $routes->connect('admin/slider',['controller'=>'Slider','action'=>'index']);
-    $routes->connect('admin/slider/add',['controller'=>'Slider','action'=>'add']);
-    $routes->connect('admin/slider/edit/:id',['controller'=>'Slider','action'=>'edit']);
-    $routes->connect('admin/slider/delete/:id',['controller'=>'Slider','action'=>'delete']);
-    $routes->connect('admin/slider',['controller'=>'Slider','action'=>'search']);
+    $routes->connect('admin/slider', ['controller' => 'Slider', 'action' => 'index']);
+    $routes->connect('admin/slider/add', ['controller' => 'Slider', 'action' => 'add']);
+    $routes->connect('admin/slider/edit/:id', ['controller' => 'Slider', 'action' => 'edit']);
+    $routes->connect('admin/slider/delete/:id', ['controller' => 'Slider', 'action' => 'delete']);
+    $routes->connect('admin/slider/search', ['controller' => 'Slider', 'action' => 'search']);
 
     //........................................
+
+    $routes->connect('admin/comment', ['controller' => 'Comment', 'action' => 'index']);
+    $routes->connect('admin/comment/add', ['controller' => 'Comment', 'action' => 'add']);
+    $routes->connect('admin/comment/edit/:id', ['controller' => 'Comment', 'action' => 'edit']);
+    $routes->connect('admin/comment/delete/:id', ['controller' => 'Comment', 'action' => 'delete']);
+    $routes->connect('admin/comment/search', ['controller' => 'Comment', 'action' => 'search']);
+
+    //
+
+    $routes->connect('admin/contact', ['controller' => 'Contact', 'action' => 'index']);
+    $routes->connect('admin/contact/add', ['controller' => 'Contact', 'action' => 'add']);
+    $routes->connect('admin/contact/edit/:id', ['controller' => 'Contact', 'action' => 'edit']);
+    $routes->connect('admin/contact/delete/:id', ['controller' => 'Contact', 'action' => 'delete']);
+    $routes->connect('admin/contact/search', ['controller' => 'Contact', 'action' => 'search']);
+
+    //
+    $routes->connect('admin/ourteam', ['controller' => 'Ourteam', 'action' => 'index']);
+    $routes->connect('admin/ourteam/add', ['controller' => 'Ourteam', 'action' => 'add']);
+    $routes->connect('admin/ourteam/edit/:id', ['controller' => 'Ourteam', 'action' => 'edit']);
+    $routes->connect('admin/ourteam/delete/:id', ['controller' => 'Ourteam', 'action' => 'delete']);
+    $routes->connect('admin/ourteam/search', ['controller' => 'Ourteam', 'action' => 'search']);
+//
+    $routes->connect('admin/about', ['controller' => 'About', 'action' => 'index']);
+    $routes->connect('admin/about/add', ['controller' => 'About', 'action' => 'add']);
+    $routes->connect('admin/about/edit/:id', ['controller' => 'About', 'action' => 'edit']);
+    $routes->connect('admin/about/delete/:id', ['controller' => 'About', 'action' => 'delete']);
+    $routes->connect('admin/about/search', ['controller' => 'About', 'action' => 'search']);
+
+    //
+
+    $routes->connect('admin/topbrands', ['controller' => 'Topbrands', 'action' => 'index']);
+    $routes->connect('admin/topbrands/add', ['controller' => 'Topbrands', 'action' => 'add']);
+    $routes->connect('admin/topbrands/edit/:id', ['controller' => 'Topbrands', 'action' => 'edit']);
+    $routes->connect('admin/topbrands/delete/:id', ['controller' => 'Topbrands', 'action' => 'delete']);
+    $routes->connect('admin/topbrands/search', ['controller' => 'Topbrands', 'action' => 'search']);
 
 
     $routes->fallbacks(DashedRoute::class);
