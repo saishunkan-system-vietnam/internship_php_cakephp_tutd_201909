@@ -75,7 +75,7 @@ class SliderController extends AppController
 
                 $slider->image = $uploaded_path . "/" . $setNewFileName;
             }
-            $this->Slider->patchEntity($slider, $input,['validate' => 'update']);
+            $this->Slider->patchEntity($slider, $input, ['validate' => 'update']);
             if ($this->Slider->save($slider)) {
                 $this->set(compact('slider'));
                 return $this->redirect(['controller' => 'Slider', 'action' => 'index']);
