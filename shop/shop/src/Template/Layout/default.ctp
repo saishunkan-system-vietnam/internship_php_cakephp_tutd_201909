@@ -25,10 +25,6 @@ $cakeDescription = 'Shop';
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
-
-    <!-- <? //= $this->Html->css('base.css') ?>   -->
-    <!--   <? //= $this->Html->css('style.css') ?> -->
-
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
@@ -65,6 +61,7 @@ $cakeDescription = 'Shop';
     </div>
 </div>
 <!-- jQuery -->
+<script src="<?php echo SITE_URL; ?>ckeditor/ckeditor/ckeditor.js"></script>
 <script src="<?php echo SITE_URL; ?>vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="<?php echo SITE_URL; ?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>

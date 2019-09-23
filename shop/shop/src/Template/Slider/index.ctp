@@ -53,7 +53,6 @@
                     <?php
                     foreach ($slider as $slider):
                         ?>
-
                         <tr class="even pointer">
                             <td class="a-center ">
                                 <input type="checkbox" class="flat selectbox" name="ids[]"
