@@ -30,6 +30,17 @@ use Cake\Event\Event;
 class AppController extends Controller
 {
 
+//    public function initialize()
+//    {
+//
+//    }
+
+
+//    public function beforeFilter(Event $event)
+//    {
+//        parent::beforeFilter($event);
+////        $this->viewBuilder()->getLayout('fontendefault');
+//    }
     /**
      * Initialization hook method.
      *

@@ -61,6 +61,26 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('admin/blogs/delete/:id', ['controller' => 'Blogs', 'action' => 'delete']);
     $routes->connect('admin/blogs/search', ['controller' => 'Blogs', 'action' => 'search']);
 
+    $routes->connect('admin/logo', ['controller' => 'Logo', 'action' => 'index']);
+    $routes->connect('admin/logo/add', ['controller' => 'Logo', 'action' => 'add']);
+    $routes->connect('admin/logo/edit/:id', ['controller' => 'Logo', 'action' => 'edit']);
+    $routes->connect('admin/logo/delete/:id', ['controller' => 'Logo', 'action' => 'delete']);
+    $routes->connect('admin/logo/search', ['controller' => 'Logo', 'action' => 'search']);
+
+    $routes->connect('admin/payment', ['controller' => 'Payment', 'action' => 'index']);
+    $routes->connect('admin/payment/add', ['controller' => 'Payment', 'action' => 'add']);
+    $routes->connect('admin/payment/edit/:id', ['controller' => 'Payment', 'action' => 'edit']);
+    $routes->connect('admin/payment/delete/:id', ['controller' => 'Payment', 'action' => 'delete']);
+    $routes->connect('admin/payment/search', ['controller' => 'Payment', 'action' => 'search']);
+
+    $routes->connect('admin/logolast', ['controller' => 'Logolast', 'action' => 'index']);
+    $routes->connect('admin/logolast/add', ['controller' => 'Logolast', 'action' => 'add']);
+    $routes->connect('admin/logolast/edit/:id', ['controller' => 'Logolast', 'action' => 'edit']);
+    $routes->connect('admin/logolast/delete/:id', ['controller' => 'Logolast', 'action' => 'delete']);
+    $routes->connect('admin/logolast/search', ['controller' => 'Logolast', 'action' => 'search']);
+
+    $routes->connect('/', ['controller'=>'Pages','action'=>'index','home']);
+
     $routes->fallbacks(DashedRoute::class);
 });
 
