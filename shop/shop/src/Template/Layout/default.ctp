@@ -54,10 +54,12 @@ $cakeDescription = 'Shop';
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
+        <?php if ($logedIn): ?>
         <?php echo $this->element('sidebar'); ?>
         <?php echo $this->element('top_bar'); ?>
         <?php echo $this->element('content'); ?>
         <?php echo $this->element('footer'); ?>
+       <?php endif; ?>
     </div>
 </div>
 <!-- jQuery -->

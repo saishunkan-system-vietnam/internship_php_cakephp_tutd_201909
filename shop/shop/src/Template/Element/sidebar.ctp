@@ -1,17 +1,17 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Chào admin!</span></a>
+            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Chào <span style="color: greenyellow;font-weight: bold"><?php echo  $session['username']  ?>!</span></a>
         </div>
         <div class="clearfix"></div>
         <!-- menu profile quick info -->
         <div class="profile clearfix">
             <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?= $session['image'] ?>" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>Tú Trịnh</h2>
+                <h2><?= $session['username']?></h2>
             </div>
         </div>
         <!-- /menu profile quick info -->

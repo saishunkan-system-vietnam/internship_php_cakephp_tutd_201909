@@ -7,23 +7,18 @@ use Cake\Routing\Route\DashedRoute;
 Router::defaultRouteClass(DashedRoute::class);
 Router::scope('/', function (RouteBuilder $routes) {
 
-    $routes->connect('admin/users', ['controller' => 'Users', 'action' => 'index']);
-    $routes->connect('admin/users/add', ['controller' => 'Users', 'action' => 'add']);
-    $routes->connect('admin/users/edit/:id', ['controller' => 'Users', 'action' => 'edit']);
-    $routes->connect('admin/users/delete/:id', ['controller' => 'Users', 'action' => 'delete']);
-    $routes->connect('admin/users/search', ['controller' => 'Users', 'action' => 'search']);
-    $routes->connect('/users/register', ['controller' => 'Users', 'action' => 'delete']);
-    $routes->connect('login', ['controller' => 'Users', 'action' => 'login']);
-    $routes->connect('/users/verification', ['controller' => 'Users', 'action' => 'verification']);
-
     $routes->connect('admin/user', ['controller' => 'User', 'action' => 'index']);
     $routes->connect('admin/user/add', ['controller' => 'User', 'action' => 'add']);
     $routes->connect('admin/user/edit/:id', ['controller' => 'User', 'action' => 'edit']);
     $routes->connect('admin/user/delete/:id', ['controller' => 'User', 'action' => 'delete']);
     $routes->connect('admin/user/search', ['controller' => 'User', 'action' => 'search']);
-    $routes->connect('/user/register', ['controller' => 'User', 'action' => 'delete']);
-    $routes->connect('login', ['controller' => 'User', 'action' => 'login']);
-    $routes->connect('/user/verification', ['controller' => 'User', 'action' => 'verification']);
+
+//    $routes->connect('/login/register', ['controller' => 'Login', 'action' => 'delete']);
+    $routes->connect('login', ['controller' => 'Login', 'action' => 'login']);
+    $routes->connect('logout', ['controller' => 'User', 'action' => 'logout']);
+    $routes->connect('logout', ['controller' => 'Login', 'action' => 'logout']);
+//    $routes->connect('/login/verification', ['controller' => 'Login', 'action' => 'verification']);
+
 
     $routes->connect('admin/slider', ['controller' => 'Slider', 'action' => 'index']);
     $routes->connect('admin/slider/add', ['controller' => 'Slider', 'action' => 'add']);
@@ -79,7 +74,16 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('admin/logolast/delete/:id', ['controller' => 'Logolast', 'action' => 'delete']);
     $routes->connect('admin/logolast/search', ['controller' => 'Logolast', 'action' => 'search']);
 
+    $routes->connect('admin/categories', ['controller' => 'Categories', 'action' => 'index']);
+    $routes->connect('admin/categories/add', ['controller' => 'Categories', 'action' => 'add']);
+    $routes->connect('admin/categories/edit/:id', ['controller' => 'Categories', 'action' => 'edit']);
+    $routes->connect('admin/categories/delete/:id', ['controller' => 'Categories', 'action' => 'delete']);
+    $routes->connect('admin/categories/search', ['controller' => 'Categories', 'action' => 'search']);
+
+
     $routes->connect('/', ['controller'=>'Pages','action'=>'index','home']);
+
+//    $routes->connect('cate')
 
     $routes->fallbacks(DashedRoute::class);
 });
