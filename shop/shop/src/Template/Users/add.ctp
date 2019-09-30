@@ -35,7 +35,7 @@
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="email" id="email" name="email" required="required"
-                                           class="form-control col-md-7 col-xs-12" placeholder="Nhập email của bạn "  value="<?php if (isset($users->email)) echo $users->email;  ?>" >
+                                           class="form-control col-md-7 col-xs-12" placeholder="Nhập email của bạn ">
                                     <?php if (isset($err['email'])): ?>
                                         <?php foreach ($err['email'] as $item): ?>
                                             <div><?= $item ?></div>
@@ -48,7 +48,7 @@
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input id="password" type="password" name="password"
                                            class="form-control col-md-7 col-xs-12" required="required"
-                                           placeholder="Nhập mật khẩu của bạn "  value="<?php if (isset($users->password)) echo $users->password;  ?>" >
+                                           placeholder="Nhập mật khẩu của bạn ">
                                     <?php if (isset($err['password'])): ?>
                                         <?php foreach ($err['password'] as $item): ?>
                                             <div><?= $item ?></div>
@@ -63,7 +63,7 @@
                                     <input id="password2" type="password" name="confirm_password"
                                            data-validate-linked="password"
                                            class="form-control col-md-7 col-xs-12" required="required"
-                                           placeholder="Nhập lại mật khẩu của bạn "  value="<?php if (isset($users->password)) echo $users->password;  ?>" >
+                                           placeholder="Nhập lại mật khẩu của bạn ">
                                     <?php if (isset($err['password'])): ?>
                                         <?php foreach ($err['password'] as $item): ?>
                                             <div><?= $item ?></div>
@@ -77,7 +77,7 @@
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="tel" id="telephone" name="phone" required="required"
-                                           placeholder="Nhập số điện thoại c " class="form-control col-md-7 col-xs-12"  value="<?php if (isset($users->phone)) echo $users->phone;  ?>" >
+                                           placeholder="Nhập số điện thoại c " class="form-control col-md-7 col-xs-12">
                                     <?php if (isset($err['phone'])): ?>
                                         <?php foreach ($err['phone'] as $item): ?>
                                             <div><?= $item ?></div>
@@ -93,7 +93,7 @@
                                     <input id="name" class="form-control col-md-7 col-xs-12"
                                            data-validate-length-range="6"
                                            data-validate-words="2" name="addr" placeholder="Nhập địa chỉ "
-                                           required="required" type="text"  value="<?php if (isset($users->addr)) echo $users->addr;  ?>" >
+                                           required="required" type="text">
                                     <?php if (isset($err['addr'])): ?>
                                         <?php foreach ($err['addr'] as $item): ?>
                                             <div><?= $item ?></div>

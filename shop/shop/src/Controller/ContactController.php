@@ -19,6 +19,11 @@ class ContactController extends AppController
         $this->loadModel('Contact');
     }
 
+    /**
+     * Index method
+     *
+     * @return \Cake\Http\Response|null
+     */
     public function index()
     {
         $this->paginate = [
@@ -27,6 +32,7 @@ class ContactController extends AppController
         $contact = $this->paginate($this->Contact->find()->order(['id' => 'DESC']));
         $this->set(compact('contact'));
     }
+
 
     public function add()
     {
@@ -44,6 +50,7 @@ class ContactController extends AppController
                 $error = $contact->getErrors();
                 $this->set('err', $error);
             }
+
         }
         $this->set(compact('contact'));
     }
@@ -66,6 +73,7 @@ class ContactController extends AppController
                 $error = $contact->getErrors();
                 $this->set('err', $error);
             }
+
         }
         $this->set(compact('contact'));
     }
@@ -78,6 +86,7 @@ class ContactController extends AppController
         return $this->redirect(['controller'=>'Contact','action' => 'index']);
     }
 
+
     public function search()
     {
         $search = $this->request->getQuery('q');
@@ -86,6 +95,7 @@ class ContactController extends AppController
         ];
         $contact = $this->paginate($this->Contact->find()->where(function ($exp, $query) use ($search) {
             return $exp->like('username', '%' . $search . '%');
+
         }));
         $this->set('contact', $contact);
     }

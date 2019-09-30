@@ -32,6 +32,7 @@ class UsersController extends AppController
         ];
         $users = $this->paginate($this->Users->find()->order(['id' => 'DESC']));
         $this->set(compact('users'));
+
     }
 
     public function add()
@@ -46,14 +47,13 @@ class UsersController extends AppController
             $this->Users->patchEntity($user, $input);
 
             if ($this->Users->save($user)) {
-                $this->set(compact('user'));
-                return $this->redirect(['controller'=>'User','action' => 'index']);
+                return $this->redirect(['action' => 'index']);
             } else {
                 $error = $user->getErrors();
                 $this->set('err', $error);
             }
+
         }
-        $this->set(compact('user'));
     }
 
     public function edit()
@@ -93,6 +93,7 @@ class UsersController extends AppController
         ];
         $users = $this->paginate($this->Users->find()->where(function ($exp, $query) use ($search) {
             return $exp->like('username', '%' . $search . '%');
+
         }));
         $this->set('users', $users);
     }
@@ -113,6 +114,7 @@ class UsersController extends AppController
             $user->token = $mytoken;
             if ($userTable->save($user)) {
                 $this->Flash->set('Reginster successful, your confirmation email has been sent', ['element' => 'success']);
+
                 TransportFactory::setConfig('mailtrap', [
                     'host' => 'smtp.mailtrap.io',
                     'port' => 2525,

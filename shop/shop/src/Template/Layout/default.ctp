@@ -25,6 +25,10 @@ $cakeDescription = 'Shop';
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
+
+    <!-- <? //= $this->Html->css('base.css') ?>   -->
+    <!--   <? //= $this->Html->css('style.css') ?> -->
+
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
@@ -54,16 +58,13 @@ $cakeDescription = 'Shop';
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
-        <?php if ($logedIn): ?>
         <?php echo $this->element('sidebar'); ?>
         <?php echo $this->element('top_bar'); ?>
         <?php echo $this->element('content'); ?>
         <?php echo $this->element('footer'); ?>
-       <?php endif; ?>
     </div>
 </div>
 <!-- jQuery -->
-<script src="<?php echo SITE_URL; ?>ckeditor/ckeditor/ckeditor.js"></script>
 <script src="<?php echo SITE_URL; ?>vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="<?php echo SITE_URL; ?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>

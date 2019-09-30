@@ -30,21 +30,6 @@ use Cake\Event\Event;
 class AppController extends Controller
 {
 
-//    public function initialize()
-//    {
-//
-//    }
-
-
-    public function beforeFilter(Event $event)
-    {
-        parent::beforeFilter($event);
-//        $this->viewBuilder()->getLayout('fontendefault');
-        $session = $this->Auth->User();
-        if ($session == true) {
-            $this->set(compact('session'));
-        }
-    }
     /**
      * Initialization hook method.
      *
@@ -62,35 +47,25 @@ class AppController extends Controller
             'enableBeforeRedirect' => false,
         ]);
         $this->loadComponent('Flash');
-        $this->loadComponent('Auth', [
-            'authenticate' => [
-                'Form' => [
-                    'fields' => [
-                        'username' => 'email',
-                        'password' => 'password',
-                    ],
-                    'userModel' => 'User',
-                ]
-            ],
-//            'loginRedirect' => [
-//                'controller' => 'User',
-//                'action' => 'index'
+//        $this->loadComponent('Auth', [
+//            'authenticate' => [
+//                'Form' => [
+//                    'fields' => [
+//                        'username' => 'email',
+//                        'password' => 'password',
+//                    ]
+//                ]
 //            ],
-            'loginAction' => [
-                'controller' => 'Login',
-                'action' => 'login',
-            ],
-        ]);
+//            'loginAction' => [
+//                'controller' => 'Users',
+//                'action'=>'login',
+//            ],
+//        ]);
 
         /*
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
-        if ($this->request->getSession()->read('Auth.User')){
-            $this->set('logedIn',true);
-        }else{
-            $this->set('logedIn',false);
-        }
     }
 }
