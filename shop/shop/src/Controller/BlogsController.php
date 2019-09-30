@@ -38,7 +38,7 @@ class BlogsController extends AppController
             $uploaded_path = "/img/upload";
             $tmp_name = $this->request->getData()['file']['tmp_name'];
             $image_name = $this->request->getData()['file']['name'];
-            $setNewFileName = time() . "_" . rand(000000, 999999) . $image_name;
+            $setNewFileName =  $image_name.time() . "_" . rand(000000, 999999);
             if (move_uploaded_file($tmp_name, WWW_ROOT . $uploaded_path . "/" . $setNewFileName)) {
                 $blogs->image = $uploaded_path . "/" . $setNewFileName;
             }

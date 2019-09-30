@@ -54,20 +54,9 @@ class CategoriesTable extends Table
             ->notEmptyString('slug');
 
         $validator
-            ->boolean('status')
-            ->notEmptyString('status');
-
-        $validator
             ->dateTime('modifind')
             ->allowEmptyDateTime('modifind');
 
         return $validator;
-    }
-
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['parent_id'], 'ParentCategories'));
-
-        return $rules;
     }
 }

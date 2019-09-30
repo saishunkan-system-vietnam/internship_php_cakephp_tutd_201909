@@ -52,7 +52,6 @@
                     <?php
                     foreach ($comment as $comment):
                         ?>
-
                         <tr class="even pointer">
                             <td class="a-center ">
                                 <input type="checkbox" class="flat selectbox" name="ids[]"

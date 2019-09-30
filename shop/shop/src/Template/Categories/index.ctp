@@ -24,7 +24,8 @@
                 <form method="post">
                     <p>
                         <button type="submit"
-                                formaction="<?php echo $this->Url->build(['action' => 'deleteselected']); ?>"
+                                formaction="
+                <?php echo $this->Url->build(['action' => 'deleteselected']); ?>"
                                 class="btn btn-danger">Delete Selected
                         </button>
                     </p>
@@ -32,12 +33,9 @@
                 <table class="table table-striped jambo_table bulk_action">
                     <thead>
                     <tr class="headings">
-                        <th>
-                            <input type="checkbox" id="check-all" class="flat selectall">
-                        </th>
+
                         <th class="column-title">Id</th>
                         <th class="column-title">Name</th>
-                        <th class="column-title">Danh mục con</th>
                         <th class="column-title">Slug</th>
                         <th class="column-title">Status</th>
                         <th class="column-title no-link last"><span class="nobr">Action</span>
@@ -49,36 +47,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    foreach ($cate as $cate):
-                        ?>
-                        <tr class="even pointer">
-                            <td class="a-center ">
-                                <input type="checkbox" class="flat selectbox" name="ids[]"
-                                       value="<?php echo $cate->id ?>">
-                            </td>
-                            <td class=" "><?php echo $cate->id; ?></td>
-                            <td class=" "><?php echo $cate->name; ?></td>
-                            <td>
-                               <?php echo $cate->parent_id?>
-                            </td>
-                            <td class=" "><?php echo $cate->slug; ?></td>
-                            <td class="">
-                                <?php if ($cate->status == 0): ?>
-                                    <span style="color: red">Ân</span>
-                                <?php else: ?>
-                                    <span style="color: green">Hiện</span>
-                                <?php endif; ?>
-                            </td>
-                            <td class=" last">
-                                <a href="/admin/categories/edit/<?= $cate->id ?>">Edit | </a>
-                                <a href="/admin/categories/delete/<?= $cate->id ?>"
-                                   onclick="return confirm('Bạn có chắc chăn muốn xóa')">Delete</a>
-                            </td>
-                        </tr>
-                    <?php
-                    endforeach;
-                    ?>
+                    <?php TableCategories($cate); ?>
                     </tbody>
                 </table>
             </div>
@@ -112,3 +81,30 @@ $paginator = $this->Paginator->setTemplates([
     </ul>
 </nav>
 
+
+<?php
+function TableCategories($categories, $parent_id = 0, $char = '')
+{
+    foreach ($categories as $key => $item) {
+        // Nếu là chuyên mục con thì hiển thị
+        if ($item->parent_id == $parent_id) {
+            echo '<tr>';
+            echo '<td>' . $item->id . '</td>';
+            echo '<td>' . $char . $item->name . '</td>';
+            echo '<td>' . $item->slug . '</td>';
+            echo '<td>' . $item->status . '</td>';
+            echo '<td>';
+            echo '<a href="/admin/categories/edit/' .$item->id. '">Edit | </a>
+                               <a href="/admin/categories/delete/' .$item->id. '?>"
+                          onclick="return confirm(\'Bạn có chắc chăn muốn xóa\')">Delete</a>';
+            echo '</td>';
+            echo '</tr>';
+            // Xóa chuyên mục đã lặp
+            unset($categories[$key]);
+            // Tiếp tục đệ quy để tìm chuyên mục con của chuyên mục đang lặp
+            TableCategories($categories, $item->id, $char . '- - - ');
+        }
+    }
+}
+
+?>

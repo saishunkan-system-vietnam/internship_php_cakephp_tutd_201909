@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -15,24 +16,66 @@ class CategoriesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'limit' => '5'
+            'limit' => '20'
         ];
-        $cate = $this->paginate($this->Categories->find()->where(['parent_id'=>0])->order(['id' => 'DESC']));
+//        $cate = $this->paginate($this->Categories->find()->where(['parent_id'=>0])->order(['id' => 'DESC']));
+        $cate = $this->paginate($this->Categories->find()->order(['id' => 'DESC']))->toArray();
         $this->set(compact('cate'));
     }
 
     public function add()
     {
-
+        $cate = $this->Categories->newEntity();
+        $catee = $this->Categories->find()->all();
+        if ($this->request->is('post')) {
+            $input['name'] = $this->getRequest()->getData('name');
+            $input['slug'] = $this->getRequest()->getData('slug');
+            $input['parent_id'] = $this->getRequest()->getData('parent_id');
+            $input['status'] = $this->getRequest()->getData('status');
+            $this->Categories->patchEntity($cate, $input);
+            if ($this->Categories->save($cate)) {
+                $this->set(compact('cate'));
+                return $this->redirect(['controller' => 'Categories', 'action' => 'index']);
+            } else {
+                $error = $cate->getErrors();
+                $this->set('err', $error);
+            }
+        }
+        $this->set(compact('cate'));
+        $this->set(compact('catee'));
     }
 
-    public function edit($id = null)
+    public function edit()
     {
-
+        $id = $this->request->getParam('id');
+        $cate = $this->Categories->get($id);
+        $this->set('cate', $cate);
+        $catee = $this->Categories->find()->all();
+        if ($this->request->is('post')) {
+            $input['name'] = $this->getRequest()->getData('name');
+            $input['slug'] = $this->getRequest()->getData('slug');
+            $input['parent_id'] = $this->getRequest()->getData('parent_id');
+            $input['status'] = $this->getRequest()->getData('status');
+//            dd($input);
+            $this->Categories->patchEntity($cate, $input);
+            if ($this->Categories->save($cate)) {
+                $this->set(compact('cate'));
+                return $this->redirect(['controller' => 'Categories', 'action' => 'index']);
+            } else {
+                $error = $cate->getErrors();
+                dd($error);
+                $this->set('err', $error);
+            }
+        }
+        $this->set(compact('cate'));
+        $this->set(compact('catee'));
     }
 
-    public function delete($id = null)
+    public function delete()
     {
-
+        $id = $this->request->getParam('id');
+        $cate = $this->Categories->get($id);
+        $this->Categories->delete($cate);
+        return $this->redirect(['controller' => 'Categories', 'action' => 'index']);
     }
 }

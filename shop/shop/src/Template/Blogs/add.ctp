@@ -26,24 +26,11 @@
                                 </div>
                             </div>
                             <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Title <span
-                                        class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea id="ckeditor3" name="content" required="required" placeholder="Mô tả content" ><?php if (isset($blogs->title)) echo $blogs->title;?></textarea>
-                                    <?php if (isset($err['title'])): ?>
-                                        <?php foreach ($err['title'] as $item): ?>
-                                            <div><?= $item ?></div>
-                                        <?php endforeach; ?>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                            <div class="item form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Description <span
                                         class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea id="ckeditor1" name="content" required="required" placeholder="Mô tả content" ><?php if (isset($blogs->description)) echo $blogs->description;?></textarea>
+                                    <textarea id="ckeditor1" name="description" required="required" placeholder="Mô tả content" ><?php if (isset($blogs->description)) echo $blogs->description;?></textarea>
                                     <?php if (isset($err['description'])): ?>
                                         <?php foreach ($err['description'] as $item): ?>
                                             <div><?= $item ?></div>

@@ -65,9 +65,8 @@ class BlogsTable extends Table
 
         $validator
             ->scalar('description')
-            ->maxLength('description', 4294967295)
-            ->requirePresence('description', 'create')
-            ->notEmptyString('description');
+            ->maxLength('description', 4294967295);
+
 
         $validator
             ->scalar('content')
