@@ -1,12 +1,17 @@
 <header>
     <div class="container">
         <!-- top nav -->
+
         <nav class="top_nav d-flex pt-3 pb-1">
             <!-- logo -->
-            <h1>
-                <a class="navbar-brand" href="index.html">fh
-                </a>
-            </h1>
+            <?php foreach ($logo as $logo): ?>
+                <h1>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="<?php echo $logo['image'] ?>">
+                    </a>
+                </h1>
+            <?php endforeach; ?>
+
             <!-- //logo -->
             <div class="w3ls_right_nav ml-auto d-flex">
                 <!-- search form -->
@@ -119,80 +124,6 @@
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item dropdown has-mega-menu" style="position:static;">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="true" aria-expanded="false">Women's clothing</a>
-                        <div class="dropdown-menu" style="width:100%">
-                            <div class="px-0 container">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <a class="dropdown-item" href="women.html">Dresses</a>
-                                        <a class="dropdown-item" href="women.html">T-shirts</a>
-                                        <a class="dropdown-item" href="women.html">Skirts</a>
-                                        <a class="dropdown-item" href="women.html">Jeans</a>
-                                        <a class="dropdown-item" href="women.html">Tunics</a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a class="dropdown-item" href="women.html">T-shirts</a>
-                                        <a class="dropdown-item" href="women.html">Dresses</a>
-                                        <a class="dropdown-item" href="women.html">Tunics</a>
-                                        <a class="dropdown-item" href="women.html">Skirts</a>
-                                        <a class="dropdown-item" href="women.html">Jeans</a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a class="dropdown-item" href="women.html">Dresses</a>
-                                        <a class="dropdown-item" href="women.html">T-shirts</a>
-                                        <a class="dropdown-item" href="women.html">Skirts</a>
-                                        <a class="dropdown-item" href="women.html">Jeans</a>
-                                        <a class="dropdown-item" href="women.html">Tunics</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown has-mega-menu" style="position:static;">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="true" aria-expanded="false">Kids Clothing</a>
-                        <div class="dropdown-menu" style="width:100%">
-                            <div class="container">
-                                <div class="row w3_kids  py-3">
-                                    <div class="col-md-3 ">
-                                        <span class="bg-light">Boy's Clothing</span>
-                                        <a class="dropdown-item" href="boys.html">T-Shirts</a>
-                                        <a class="dropdown-item" href="boys.html">Coats</a>
-                                        <a class="dropdown-item" href="boys.html">Shirts</a>
-                                        <a class="dropdown-item" href="boys.html">Suits & Blazers</a>
-                                        <a class="dropdown-item" href="boys.html">Jackets</a>
-                                        <a class="dropdown-item" href="boys.html">Trousers</a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a class="dropdown-item mt-4" href="boys.html">T-Shirts</a>
-                                        <a class="dropdown-item" href="boys.html">Coats</a>
-                                        <a class="dropdown-item" href="boys.html">Shirts</a>
-                                        <a class="dropdown-item" href="boys.html">Suits & Blazers</a>
-                                        <a class="dropdown-item" href="boys.html">Jackets</a>
-                                        <a class="dropdown-item" href="boys.html">Trousers</a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <span>Girl's Clothing</span>
-                                        <a class="dropdown-item" href="girls.html">T-shirts</a>
-                                        <a class="dropdown-item" href="girls.html">Dresses</a>
-                                        <a class="dropdown-item" href="girls.html">Tunics</a>
-                                        <a class="dropdown-item" href="girls.html">Skirts</a>
-                                        <a class="dropdown-item" href="girls.html">Jeans</a>
-                                        <a class="dropdown-item" href="girls.html">Midi</a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a class="dropdown-item  mt-4" href="girls.html">Tunics</a>
-                                        <a class="dropdown-item" href="girls.html">Skirts</a>
-                                        <a class="dropdown-item" href="girls.html">T-shirts</a>
-                                        <a class="dropdown-item" href="girls.html">Dresses</a>
-                                        <a class="dropdown-item" href="girls.html">Jeans</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About</a>
                     </li>
@@ -209,3 +140,37 @@
     </div>
     <!-- //header container -->
 </header>
+<?php
+
+function showCategories($categories, $parent_id = 0, $char = '')
+{
+    $cate_child = array();
+    foreach ($categories as $key => $item)
+    {
+        if ($item->parent_id == $parent_id)
+        {
+            $cate_child[] = $item;
+            unset($categories[$key]);
+        }
+    }
+
+    if ($cate_child)
+    {
+        echo '<ul>';
+        foreach ($cate_child as $key => $item)
+        {
+            echo '<li>'.$item->name;
+            showCategories($categories, $item->id, $char.'---');
+            echo '</li>';
+        }
+        echo '</ul>';
+    }
+}
+
+
+
+
+
+
+
+?>

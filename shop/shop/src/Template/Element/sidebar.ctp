@@ -88,6 +88,17 @@
                         </ul>
                     </li>
                 </ul>
+
+                <ul class="nav side-menu">
+                    <li><a><i class="glyphicon glyphicon-hand-up"></i> Represent <span
+                                class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><?php echo $this->Html->link('Danh sách ', ['controller' => 'Represent', 'action' => 'index']) ?></li>
+                            <li><?php echo $this->Html->link('Thêm ', ['controller' => 'Represent', 'action' => 'add']) ?></li>
+                        </ul>
+                    </li>
+                </ul>
+
                 <ul class="nav side-menu">
                     <li><a><i class="glyphicon glyphicon-hand-up"></i> Setting <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">

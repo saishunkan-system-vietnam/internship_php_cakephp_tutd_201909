@@ -22,31 +22,15 @@
 <!-- //services-->
 <!-- about -->
 <div class="row no-gutters pb-5">
+    <?php foreach ($represent as $represent): ?>
     <div class="col-sm-4">
         <div class="hovereffect">
-            <img class="img-fluid" src="images/a1.jpg" alt="">
+            <img class="img-fluid" src="<?php echo $represent['image']?>" alt="">
             <div class="overlay">
-                <h5>women's fashion</h5>
+                <h5><?php echo $represent['name']?></h5>
                 <a class="info" href="women.html">Shop Now</a>
             </div>
         </div>
     </div>
-    <div class="col-sm-4">
-        <div class="hovereffect">
-            <img class="img-fluid" src="images/a2.jpg" alt="">
-            <div class="overlay">
-                <h5>men's fashion</h5>
-                <a class="info" href="men.html">Shop Now</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="hovereffect">
-            <img class="img-fluid" src="images/a3.jpg" alt="">
-            <div class="overlay">
-                <h5>kid's fashion</h5>
-                <a class="info" href="girls.html">Shop Now</a>
-            </div>
-        </div>
-    </div>
+    <?php endforeach; ?>
 </div>

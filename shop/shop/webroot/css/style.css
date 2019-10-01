@@ -99,7 +99,7 @@ input.form-control {
 
 /* mega nav */
 
-/* nav.navbar{ 
+/* nav.navbar{
     background: #c2e59c;
     fallback for old browsers
 
@@ -226,7 +226,7 @@ h5.shop_w3 {
 /* banner */
 
 .banner {
-    background: url(../images/bann1.jpg) no-repeat;
+    /*background: url(../images/bann1.jpg) no-repeat;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -1573,7 +1573,7 @@ ul.bottom-links-agile li a {
     .responsive_tabs {
         margin-top: 1em;
     }
-    
+
 }
 
 @media screen and (max-width: 900px) {

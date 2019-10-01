@@ -80,8 +80,14 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('admin/categories/delete/:id', ['controller' => 'Categories', 'action' => 'delete']);
     $routes->connect('admin/categories/search', ['controller' => 'Categories', 'action' => 'search']);
 
+    $routes->connect('admin/represent', ['controller' => 'Represent', 'action' => 'index']);
+    $routes->connect('admin/represent/add', ['controller' => 'Represent', 'action' => 'add']);
+    $routes->connect('admin/represent/edit/:id', ['controller' => 'Represent', 'action' => 'edit']);
+    $routes->connect('admin/represent/delete/:id', ['controller' => 'Represent', 'action' => 'delete']);
+    $routes->connect('admin/represent/search', ['controller' => 'Represent', 'action' => 'search']);
 
     $routes->connect('/', ['controller'=>'Pages','action'=>'index','home']);
+
 
 //    $routes->connect('cate')
 
