@@ -86,6 +86,12 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('admin/represent/delete/:id', ['controller' => 'Represent', 'action' => 'delete']);
     $routes->connect('admin/represent/search', ['controller' => 'Represent', 'action' => 'search']);
 
+    $routes->connect('admin/products', ['controller' => 'Products', 'action' => 'index']);
+    $routes->connect('admin/products/add', ['controller' => 'Products', 'action' => 'add']);
+    $routes->connect('admin/products/edit/:id', ['controller' => 'Products', 'action' => 'edit']);
+    $routes->connect('admin/products/delete/:id', ['controller' => 'Products', 'action' => 'delete']);
+    $routes->connect('admin/products/search', ['controller' => 'Products', 'action' => 'search']);
+
     $routes->connect('/', ['controller'=>'Pages','action'=>'index','home']);
 
 

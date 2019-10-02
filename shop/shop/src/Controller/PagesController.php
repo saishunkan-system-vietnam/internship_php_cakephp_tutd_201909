@@ -40,6 +40,7 @@ class PagesController extends AppController
         $this->loadModel('Slider');
         $this->loadModel('Represent');
         $this->loadModel('Categories');
+        $this->loadModel('Products');
     }
 
     /**
@@ -82,20 +83,47 @@ class PagesController extends AppController
 
     public function index()
     {
-        $logo = $this->Logo->find()->select('image', 'link')->where(['status' => 1]);
+        $logo = $this->Logo
+            ->find()
+            ->select('image', 'link')
+            ->where(['status' => 1]);
         $this->set(compact('logo'));
         //slider
-        $slider = $this->Slider->find()->select(['name', 'link', 'image', 'text', 'id'])->where(['status' => 1]);
+        $slider = $this->Slider
+            ->find()
+            ->select(['name', 'link', 'image', 'text', 'id'])
+            ->where(['status' => 1]);
 
 //        dd($slider->toArray());
         $this->set(compact('slider'));
 
         //Đại diện
-        $represent = $this->Represent->find()->select(['name', 'image', 'status'])->where(['status' => 1])->limit(3)->order(['id'=>'DESC']);
+        $represent = $this->Represent
+            ->find()
+            ->select(['name', 'image', 'status'])
+            ->where(['status' => 1])
+            ->limit(3)
+            ->order(['id' => 'DESC']);
         $this->set(compact('represent'));
 
+        //products-title
+        $title = $this->Categories
+            ->find()
+            ->select(['id', 'name', 'parent_id', 'slug'])
+            ->where(['status' => 1])
+            ->limit(4)
+            ->order(['id' => 'DESC']);
+        $this->set(compact('title'));
 
+        //products
+        $products = $this->Products->find()
+            ->select(['id', 'product_name', 'image', 'price', 'sale', 'description', 'size', 'slug', 'categories_id', 'status'])
+            ->where(['status' => 1])
+            ->andwhere(['categories_id'=>24])
+            ->limit(8)
+            ->order(['id' => 'ASC'])->toArray();
 
+        $this->set('products',$products);
 
     }
 }

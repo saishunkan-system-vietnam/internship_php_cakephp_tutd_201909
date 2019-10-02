@@ -55,12 +55,8 @@
                                         class="required">*</span>
                                 </label>
                                 <select name="parent_id" class="control-label col-md-3 col-sm-3 col-xs-12">
-
-                                    <?php foreach ($catee as $cate): ?>
-                                        <option value="<?php echo $cate->id; ?>"><?php echo $cate->name; ?></option>
-                                                                                <option value="0">Parent</option>
-
-                                    <?php endforeach; ?>
+                                    <option value="0">Parent</option>
+                                    <?php showCategories($catee); ?>
                                 </select>
                             </div>
 
@@ -92,3 +88,16 @@
     </div>
 </div>
 <!-- /page content -->
+<?php
+function showCategories($categories, $parent_id = 0, $char = '')
+{
+    foreach ($categories as $key => $item) {
+        if ($item->parent_id == $parent_id) {
+            echo '<option value="' . $item->id . '">' . $char . $item->name . '</option>';
+            unset($categories[$key]);
+            showCategories($categories, $item->id, $char . '--');
+        }
+    }
+}
+
+?>

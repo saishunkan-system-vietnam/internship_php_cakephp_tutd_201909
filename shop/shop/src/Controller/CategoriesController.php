@@ -26,18 +26,20 @@ class CategoriesController extends AppController
     public function add()
     {
         $cate = $this->Categories->newEntity();
-        $catee = $this->Categories->find()->all();
+        $catee = $this->Categories->find()->toArray();
         if ($this->request->is('post')) {
             $input['name'] = $this->getRequest()->getData('name');
             $input['slug'] = $this->getRequest()->getData('slug');
             $input['parent_id'] = $this->getRequest()->getData('parent_id');
             $input['status'] = $this->getRequest()->getData('status');
+//            dd($input);
             $this->Categories->patchEntity($cate, $input);
             if ($this->Categories->save($cate)) {
                 $this->set(compact('cate'));
                 return $this->redirect(['controller' => 'Categories', 'action' => 'index']);
             } else {
                 $error = $cate->getErrors();
+                dd($error);
                 $this->set('err', $error);
             }
         }
@@ -50,7 +52,7 @@ class CategoriesController extends AppController
         $id = $this->request->getParam('id');
         $cate = $this->Categories->get($id);
         $this->set('cate', $cate);
-        $catee = $this->Categories->find()->all();
+        $catee = $this->Categories->find()->toArray();
         if ($this->request->is('post')) {
             $input['name'] = $this->getRequest()->getData('name');
             $input['slug'] = $this->getRequest()->getData('slug');
