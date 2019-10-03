@@ -16,16 +16,16 @@
                     <div class="col-md-6">
                         <form action="#" method="post">
                             <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Your Name</label>
-                                <input type="text" class="form-control" placeholder=" " name="Name" id="recipient-name"
+                                <label for="recipient-name" class="col-form-label">Email</label>
+                                <input type="text" class="form-control" placeholder=" " name="email" id="recipient-name"
                                        required="">
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Password</label>
-                                <input type="password" class="form-control" placeholder=" " name="Password" required="">
+                                <input type="password" class="form-control" placeholder=" " name="password" required="">
                             </div>
                             <div class="right-w3l">
-                                <input type="submit" class="form-control" value="Login">
+                                <input type="submit" class="form-control" value="Login" name="submit">
                             </div>
                         </form>
                     </div>
@@ -34,3 +34,5 @@
         </div>
     </div>
 </div>
+
+

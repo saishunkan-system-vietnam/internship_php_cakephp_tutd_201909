@@ -4,7 +4,7 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * User Entity
+ * Usersclient Entity
  *
  * @property int $id
  * @property string $name
@@ -13,7 +13,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime|null $created
  * @property \Cake\I18n\FrozenTime|null $update_at
  */
-class User extends Entity
+class Usersclient extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

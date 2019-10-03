@@ -1,3 +1,7 @@
+
+
+<p style="text-align: right;padding-right: 500px;color: red;font-weight: bold;padding-top: 16px">Xin chào : <span style="color: #22dd99"><?php if (isset($showEmail->email ))  echo $showEmail->email ?></span>|<a href="">Thoát</a> </p>
+
 <header>
     <div class="container">
         <!-- top nav -->
@@ -166,11 +170,5 @@ function showCategories($categories, $parent_id = 0, $char = '')
         echo '</ul>';
     }
 }
-
-
-
-
-
-
 
 ?>

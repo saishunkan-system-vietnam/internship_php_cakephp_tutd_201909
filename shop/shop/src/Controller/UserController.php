@@ -32,7 +32,7 @@ class UserController extends AppController
             $input['email'] = $this->getRequest()->getData('email');
             $input['phone'] = $this->getRequest()->getData('phone');
             $input['addr'] = $this->getRequest()->getData('addr');
-            $input['password'] = $this->getRequest()->getData('password');
+            $input['password'] =$this->getRequest()->getData('password') ;
             $input['status'] = $this->getRequest()->getData('status');
             $uploaded_path = "/img/upload";
             $tmp_name = $this->request->getData()['file']['tmp_name'];

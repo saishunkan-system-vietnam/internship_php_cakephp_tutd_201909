@@ -20,6 +20,7 @@ use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * Static content controller
@@ -41,17 +42,11 @@ class PagesController extends AppController
         $this->loadModel('Represent');
         $this->loadModel('Categories');
         $this->loadModel('Products');
+        $this->loadModel('Shopon');
+        $this->loadModel('Logolast');
+        $this->loadModel('Usersclient');
     }
 
-    /**
-     * Displays a view
-     *
-     * @param array ...$path Path segments.
-     * @return \Cake\Http\Response|null
-     * @throws \Cake\Http\Exception\ForbiddenException When a directory traversal attempt.
-     * @throws \Cake\Http\Exception\NotFoundException When the view file could not
-     *   be found or \Cake\View\Exception\MissingTemplateException in debug mode.
-     */
     public function display(...$path)
     {
         $count = count($path);
@@ -119,11 +114,63 @@ class PagesController extends AppController
         $products = $this->Products->find()
             ->select(['id', 'product_name', 'image', 'price', 'sale', 'description', 'size', 'slug', 'categories_id', 'status'])
             ->where(['status' => 1])
-            ->andwhere(['categories_id'=>24])
+            ->andwhere(['categories_id' => 24])
             ->limit(8)
             ->order(['id' => 'ASC'])->toArray();
+        $this->set('products', $products);
 
-        $this->set('products',$products);
+        //show shopon
+        $shopon = $this->Shopon->find()
+            ->select(['id', 'image', 'linkfb', 'linkyou', 'linkzalo', 'status'])
+            ->where(['status' => 1])
+            ->limit(12)
+            ->order(['id' => 'DESC'])->toArray();
+        $this->set('shopon', $shopon);
+
+        //$logolast
+        $logolast = $this->Logolast->find()
+            ->select(['id', 'link', 'image', 'text', 'status'])
+            ->where(['status' => 1])
+            ->limit(1)
+            ->order(['id' => 'DESC'])->toArray();
+        $this->set('logolast', $logolast);
+
+        // dang ki trang client
+
+        $users = $this->Usersclient->newEntity();
+        if ($this->request->is('post')) {
+            $input['name'] = $this->getRequest()->getData('name');
+            $input['email'] = $this->getRequest()->getData('email');
+            $input['password'] = md5($this->getRequest()->getData('password'));
+            $this->Usersclient->patchEntity($users, $input);
+            if ($this->Usersclient->save($users)) {
+                $this->set(compact('users'));
+                $this->Flash->success(__('ok'));
+            } else {
+                $error = $users->getErrors();
+                $this->set('err', $error);
+            }
+        }
+        $this->set(compact('users'));
+
+        //login client
+
+        if (isset($_POST['submit'])) {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $userr = $this->Usersclient->find()
+                ->select(['id', 'name', 'email', 'password'])
+                ->where(['email' => $email])
+                ->orwhere(['password' => $password])
+                ->all()->toArray();
+            $showEmail = $userr[0];
+            $this->set('showEmail' , $showEmail);
+        }
+
+        //logout
+
+
+
 
     }
 }

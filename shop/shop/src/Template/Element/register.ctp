@@ -14,36 +14,54 @@
                         <img src="images/p3.png" class="img-fluid" alt="login_image"/>
                     </div>
                     <div class="col-md-6">
-                        <form action="#" method="post">
+                        <form action="" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="recipient-name1" class="col-form-label">Your Name</label>
-                                <input type="text" class="form-control" placeholder=" " name="Name" id="recipient-name1"
-                                       required="">
+                                <input type="text" class="form-control" placeholder=" " name="name" id="recipient-name1"
+                                        value="<?php if (isset($users->name)) echo $users->name; ?>">
+                                <?php if (isset($err['name'])): ?>
+                                    <?php foreach ($err['name'] as $item): ?>
+                                        <div><?= $item ?></div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="recipient-email" class="col-form-label">Email</label>
-                                <input type="email" class="form-control" placeholder=" " name="Email"
-                                       id="recipient-email" required="">
+                                <input type="email" class="form-control" placeholder=" " name="email"
+                                       id="recipient-email"
+                                       value="<?php if (isset($users->email)) echo $users->email; ?>">
+                                <?php if (isset($err['email'])): ?>
+                                    <?php foreach ($err['email'] as $item): ?>
+                                        <div><?= $item ?></div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="password1" class="col-form-label">Password</label>
-                                <input type="password" class="form-control" placeholder=" " name="Password"
-                                       id="password1" required="">
+                                <input type="password" class="form-control" placeholder=" " name="password"
+                                       id="password1"
+                                       value="<?php if (isset($users->password)) echo $users->password; ?>">
+                                <?php if (isset($err['password'])): ?>
+                                    <?php foreach ($err['password'] as $item): ?>
+                                        <div><?= $item ?></div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="password2" class="col-form-label">Confirm Password</label>
-                                <input type="password" class="form-control" placeholder=" " name="Confirm Password"
-                                       id="password2" required="">
-                            </div>
-                            <div class="sub-w3l">
-                                <div class="sub-agile">
-                                    <input type="checkbox" id="brand2" value="">
-                                    <label for="brand2" class="mb-3">
-                                        <span></span>I Accept to the Terms & Conditions</label>
-                                </div>
+                                <input type="password" class="form-control" placeholder=" " name="confirm_password"
+                                       id="password2"
+                                       value="<?php if (isset($users->confirm_password)) echo $users->confirm_password; ?>">
+                                <?php if (isset($err['confirm_password'])): ?>
+                                    <?php foreach ($err['confirm_password'] as $item): ?>
+                                        <div><?= $item ?></div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </div>
                             <div class="right-w3l">
-                                <input type="submit" class="form-control" value="Register">
+                                <!--                                <input type="submit" class="form-control" value="Register">-->
+                                <button class="form-control" style="background-color: deeppink;color: white">Regsiter
+                                </button>
                             </div>
                         </form>
                         <p class="text-center mt-3">Already a member?
