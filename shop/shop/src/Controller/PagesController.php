@@ -45,6 +45,7 @@ class PagesController extends AppController
         $this->loadModel('Shopon');
         $this->loadModel('Logolast');
         $this->loadModel('Usersclient');
+        $this->loadModel('Contact');
     }
 
     public function display(...$path)
@@ -78,6 +79,7 @@ class PagesController extends AppController
 
     public function index()
     {
+
         $logo = $this->Logo
             ->find()
             ->select('image', 'link')
@@ -152,9 +154,7 @@ class PagesController extends AppController
             }
         }
         $this->set(compact('users'));
-
         //login client
-
         if (isset($_POST['submit'])) {
             $email = $_POST['email'];
             $password = $_POST['password'];
@@ -164,13 +164,184 @@ class PagesController extends AppController
                 ->orwhere(['password' => $password])
                 ->all()->toArray();
             $showEmail = $userr[0];
-            $this->set('showEmail' , $showEmail);
+            $this->set('showEmail', $showEmail);
+        }
+        //logout
+    }
+
+    public function detail()
+    {
+        $logo = $this->Logo
+            ->find()
+            ->select('image', 'link')
+            ->where(['status' => 1]);
+        $this->set(compact('logo'));
+        //slider
+        $slider = $this->Slider
+            ->find()
+            ->select(['name', 'link', 'image', 'text', 'id'])
+            ->where(['status' => 1])
+            ->limit(1);
+
+        $this->set(compact('slider'));
+
+        //Đại diện
+        $represent = $this->Represent
+            ->find()
+            ->select(['name', 'image', 'status'])
+            ->where(['status' => 1])
+            ->limit(3)
+            ->order(['id' => 'DESC']);
+        $this->set(compact('represent'));
+
+        //products-title
+        $title = $this->Categories
+            ->find()
+            ->select(['id', 'name', 'parent_id', 'slug'])
+            ->where(['status' => 1])
+            ->limit(4)
+            ->order(['id' => 'DESC']);
+        $this->set(compact('title'));
+
+        //$logolast
+        $logolast = $this->Logolast->find()
+            ->select(['id', 'link', 'image', 'text', 'status'])
+            ->where(['status' => 1])
+            ->limit(1)
+            ->order(['id' => 'DESC'])->toArray();
+        $this->set('logolast', $logolast);
+
+        // dang ki trang client
+        $users = $this->Usersclient->newEntity();
+        if ($this->request->is('post')) {
+            $input['name'] = $this->getRequest()->getData('name');
+            $input['email'] = $this->getRequest()->getData('email');
+            $input['password'] = md5($this->getRequest()->getData('password'));
+            $this->Usersclient->patchEntity($users, $input);
+            if ($this->Usersclient->save($users)) {
+                $this->set(compact('users'));
+                $this->Flash->success(__('ok'));
+            } else {
+                $error = $users->getErrors();
+                $this->set('err', $error);
+            }
+        }
+        $this->set(compact('users'));
+        //login client
+        if (isset($_POST['submit'])) {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $userr = $this->Usersclient->find()
+                ->select(['id', 'name', 'email', 'password'])
+                ->where(['email' => $email])
+                ->orwhere(['password' => $password])
+                ->all()->toArray();
+            $showEmail = $userr[0];
+            $this->set('showEmail', $showEmail);
         }
 
-        //logout
+        $id = $this->request->getParam('id');
+//        $products = $this->Products->find()
+//            ->select(['id', 'image', 'product_name', 'price', 'sale', 'description', 'size'])
+//            ->where(['id' => 23])
+//            ->first()->toArray();
+        $products = $this->Products->get($id);
+        $this->set('products', $products);
 
-
-
-
+//        $relate = $this->Products->find()
+//            ->select(['id', 'image', 'product_name', 'price', 'sale', 'description', 'size'])
+//            ->where(['id'])
+//            ->order(['id' => 'DESC'])
+//            ->limit(4)->toArray();
+        $relate = $this->Products->find()
+            ->where(['id'])
+            ->order(['id' => 'DESC'])
+            ->limit(4)
+            ->toArray();
+        $this->set('relate', $relate);
     }
+
+    public function contact()
+    {
+        $logo = $this->Logo
+            ->find()
+            ->select('image', 'link')
+            ->where(['status' => 1]);
+        $this->set(compact('logo'));
+        //slider
+        $slider = $this->Slider
+            ->find()
+            ->select(['name', 'link', 'image', 'text', 'id'])
+            ->limit(1)
+            ->order(['id' => 'DESC'])
+            ->where(['status' => 1]);
+
+//        dd($slider->toArray());
+        $this->set(compact('slider'));
+
+        //Đại diện
+        $represent = $this->Represent
+            ->find()
+            ->select(['name', 'image', 'status'])
+            ->where(['status' => 1])
+            ->limit(3)
+            ->order(['id' => 'DESC']);
+        $this->set(compact('represent'));
+
+        //products-title
+        $title = $this->Categories
+            ->find()
+            ->select(['id', 'name', 'parent_id', 'slug'])
+            ->where(['status' => 1])
+            ->limit(4)
+            ->order(['id' => 'DESC']);
+        $this->set(compact('title'));
+
+        //$logolast
+        $logolast = $this->Logolast->find()
+            ->select(['id', 'link', 'image', 'text', 'status'])
+            ->where(['status' => 1])
+            ->limit(1)
+            ->order(['id' => 'DESC'])->toArray();
+        $this->set('logolast', $logolast);
+
+        // dang ki trang client
+
+        $users = $this->Usersclient->newEntity();
+        if ($this->request->is('post')) {
+            $input['name'] = $this->getRequest()->getData('name');
+            $input['email'] = $this->getRequest()->getData('email');
+            $input['password'] = md5($this->getRequest()->getData('password'));
+            $this->Usersclient->patchEntity($users, $input);
+            if ($this->Usersclient->save($users)) {
+                $this->set(compact('users'));
+                $this->Flash->success(__('ok'));
+            } else {
+                $error = $users->getErrors();
+                $this->set('err', $error);
+            }
+        }
+        $this->set(compact('users'));
+        //login client
+        if (isset($_POST['submit'])) {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $userr = $this->Usersclient->find()
+                ->select(['id', 'name', 'email', 'password'])
+                ->where(['email' => $email])
+                ->orwhere(['password' => $password])
+                ->all()->toArray();
+            $showEmail = $userr[0];
+            $this->set('showEmail', $showEmail);
+        }
+
+        $contact = $this->Contact->find()
+            ->select(['id', 'addr', 'phone', 'email', 'status'])
+            ->where(['status' => 1])
+            ->limit(1)
+            ->order(['id' => 'DESC'])->toArray();
+
+        $this->set('contact', $contact);
+    }
+
 }

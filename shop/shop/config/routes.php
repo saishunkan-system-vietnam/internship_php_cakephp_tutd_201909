@@ -93,6 +93,10 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('admin/products/search', ['controller' => 'Products', 'action' => 'search']);
 
     $routes->connect('/', ['controller'=>'Pages','action'=>'index','home']);
+    $routes->connect('/pages/detail/:id', ['controller'=>'Pages','action'=>'detail']);
+    $routes->connect('/pages/about/:id',['controller'=>'Pages','action'=>'detail']);
+    $routes->connect('/pages/contact/:id',['controller'=>'Pages','action'=>'contact']);
+    $routes->connect('/pages/blog/:id',['controller'=>'Pages','action'=>'blog']);
 
 
 //    $routes->connect('cate')

@@ -48,7 +48,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <?php echo $this->element('headerfontend'); ?>
 <?php echo $this->element('sliderfontend'); ?>
 <?php echo $this->element('top_content'); ?>
-<?php echo $this->element('contentfontend'); ?>
+<?php echo $this->fetch('content'); ?>
 <?php echo $this->element('footerfontend'); ?>
 <?php echo $this->element('register'); ?>
 <?php echo $this->element('login'); ?>

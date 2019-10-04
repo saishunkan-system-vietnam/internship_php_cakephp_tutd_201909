@@ -10,7 +10,7 @@
             <!-- logo -->
             <?php foreach ($logo as $logo): ?>
                 <h1>
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="http://localhost:8765">
                         <img src="<?php echo $logo['image'] ?>">
                     </a>
                 </h1>
@@ -129,13 +129,13 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Blog</a>
+                        <a class="nav-link" href="">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="">Contact</a>
                     </li>
                 </ul>
             </div>
