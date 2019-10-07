@@ -55,11 +55,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="js/jquery-2.2.3.min.js"></script>
 <!-- //js -->
 <!-- script for show signin and signup modal -->
-<script>
-    $(document).ready(function () {
-        $("#myModal_btn").modal();
-    });
-</script>
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        $("#myModal_btn").modal();-->
+<!--    });-->
+<!--</script>-->
 <!-- //script for show signin and signup modal -->
 <!-- smooth dropdown -->
 <script>
