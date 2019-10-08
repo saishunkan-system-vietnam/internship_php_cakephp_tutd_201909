@@ -1,3 +1,14 @@
+<?php
+namespace App\Http\Session;
+use Cake\Core\Configure;
+use Cake\Http\Session;
+use Cake\Http\Session\DatabaseSession;
+?>
+
+<?php
+?>
+
+
 <div class="ibanner_w3 pt-sm-5 pt-3">
     <h4 class="head_agileinfo text-center text-capitalize text-center pt-5">
         <span>f</span>ashion
@@ -18,7 +29,6 @@
 </nav>
 <!-- //breadcrumbs -->
 <!-- Single -->
-<?php pr($this->Session->read('cart')); ?>
 <?php //echo $this->Session->Flash('cart')?>
 <div class="innerf-pages section py-5">
     <div class="container">
@@ -130,7 +140,7 @@
                             </div>
                             <!-- card footer -->
                             <div class="card-footer d-flex justify-content-end">
-                                <form action="#" method="post">
+                                <form action="" method="post">
                                     <input type="hidden" name="cmd" value="_cart">
                                     <input type="hidden" name="add" value="1">
                                     <input type="hidden" name="hub_item" value="Black Casual Men's Blazer">

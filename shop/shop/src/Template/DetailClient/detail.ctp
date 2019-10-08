@@ -1,12 +1,14 @@
 <?php
 namespace App\Http\Session;
+
 use Cake\Core\Configure;
 use Cake\Http\Session;
 use Cake\Http\Session\DatabaseSession;
 
-
 ?>
 
+<?php
+?>
 <div class="ibanner_w3 pt-sm-5 pt-3">
     <h4 class="head_agileinfo text-center text-capitalize text-center pt-5">
         <span>f</span>ashion
@@ -88,14 +90,16 @@ use Cake\Http\Session\DatabaseSession;
                 </div>
                 <div class="occasion-cart">
                     <div class="chr single-item single_page_b">
-                        <form action="" method="post">
+                        <form action="" method="get">
                             <input type="hidden" name="cmd" value="_cart">
                             <input type="hidden" name="add" value="1">
                             <input type="hidden" name="hub_item" value=" Formal Men's Blazer">
                             <input type="hidden" name="amount" value="15.99">
-                           <button type="button" class="hub-cart phub-cart btn">
-                               <a href="/detailclient/addToCart/<?= $products['id'] ?>"> <i class="fa fa-cart-plus" aria-hidden="true">Thêm giỏ hàng</i></a>
-                                </button>
+                            <button type="button" class="hub-cart phub-cart btn">
+                                <a href="/detailclient/addToCart/<?= $products['id'] ?>"> <i class="fa fa-cart-plus"
+                                                                                             aria-hidden="true">Thêm giỏ
+                                        hàng</i></a>
+                            </button>
                             <a href="" data-toggle="modal" data-target="#myModal1">
                         </form>
                     </div>
@@ -137,13 +141,14 @@ use Cake\Http\Session\DatabaseSession;
                             </div>
                             <!-- card footer -->
                             <div class="card-footer d-flex justify-content-end">
-                                <form action="#" method="post">
+                                <form action="" method="post">
                                     <input type="hidden" name="cmd" value="_cart">
                                     <input type="hidden" name="add" value="1">
                                     <input type="hidden" name="hub_item" value="Black Casual Men's Blazer">
                                     <input type="hidden" name="amount" value="20.00">
-                                    <button type="submit" class="hub-cart phub-cart btn">
-                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    <button type="button" class="hub-cart phub-cart btn">
+                                        <a href="/detailclient/addToCart/<?= $products['id'] ?>"> <i
+                                                class="fa fa-cart-plus" aria-hidden="true">Thêm giỏ hàng</i></a>
                                     </button>
                                     <a href="#" data-toggle="modal" data-target="#myModal1"></a>
                                 </form>

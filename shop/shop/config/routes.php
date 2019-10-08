@@ -1,9 +1,11 @@
 <?php
+
 use Cake\Http\Middleware\CsrfProtectionMiddleware;
 use Cake\Routing\Route\Route;
 use Cake\Routing\RouteBuilder;
 use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
+
 Router::defaultRouteClass(DashedRoute::class);
 Router::scope('/', function (RouteBuilder $routes) {
 
@@ -92,13 +94,13 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('admin/products/delete/:id', ['controller' => 'Products', 'action' => 'delete']);
     $routes->connect('admin/products/search', ['controller' => 'Products', 'action' => 'search']);
 
-    $routes->connect('/', ['controller'=>'Pages','action'=>'index','home']);
-    $routes->connect('/pages/detail/:id', ['controller'=>'DetailClient','action'=>'detail']);
-    $routes->connect('/pages/about/:id',['controller'=>'Pages','action'=>'detail']);
-    $routes->connect('/pages/contact',['controller'=>'ContactClient','action'=>'contact']);
-    $routes->connect('/pages/blog/:id',['controller'=>'Pages','action'=>'blog']);
-    $routes->connect('/detailclient/addToCart/:id',['controller'=>'DetailClient','action'=>'detail']);
-
+    $routes->connect('/', ['controller' => 'Pages', 'action' => 'index', 'home']);
+    $routes->connect('/pages/detail/:id', ['controller' => 'DetailClient', 'action' => 'detail']);
+    $routes->connect('/pages/about/:id', ['controller' => 'Pages', 'action' => 'detail']);
+    $routes->connect('/pages/contact', ['controller' => 'ContactClient', 'action' => 'contact']);
+    $routes->connect('/pages/blog/:id', ['controller' => 'Pages', 'action' => 'blog']);
+    $routes->connect('/detailclient/addToCart/:id', ['controller' => 'DetailClient', 'action' => 'detail']);
+    $routes->connect('/cart', ['controller'=>'DetailClient','action'=>'viewCart']);
 
 //    $routes->connect('cate')
 

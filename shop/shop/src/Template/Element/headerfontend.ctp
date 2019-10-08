@@ -1,13 +1,11 @@
 
-
 <p style="text-align: right;padding-right: 500px;color: red;font-weight: bold;padding-top: 16px">Xin chào : <span style="color: #22dd99"><?php if (isset($showEmail->email ))  echo $showEmail->email ?></span>|<a href="">Thoát</a> </p>
-
 <header>
     <div class="container">
         <!-- top nav -->
-
         <nav class="top_nav d-flex pt-3 pb-1">
             <!-- logo -->
+
             <?php foreach ($logo as $logo): ?>
                 <h1>
                     <a class="navbar-brand" href="http://localhost:8765">
@@ -15,7 +13,6 @@
                     </a>
                 </h1>
             <?php endforeach; ?>
-
             <!-- //logo -->
             <div class="w3ls_right_nav ml-auto d-flex">
                 <!-- search form -->
@@ -66,21 +63,20 @@
                     <!-- shopping cart -->
                     <div class="cart-mainf">
                         <div class="hubcart hubcart2 cart cart box_1">
-                            <form action="#" method="post">
-                                <input type="hidden" name="cmd" value="_cart">
-                                <input type="hidden" name="display" value="1">
+<!--                            <form action="" method="post">-->
+<!--                                <input type="hidden" name="cmd" value="_cart">-->
+<!--                                <input type="hidden" name="display" value="1">-->
                                 <button class="btn top_hub_cart mt-1" type="submit" name="submit" value="" title="Cart">
                                     <i class="fas fa-shopping-bag"></i>
                                 </button>
-                            </form>
+<!--                            </form>-->
                         </div>
                     </div>
                     <!-- //shopping cart ends here -->
                 </div>
             </div>
         </nav>
-        <!-- //top nav -->
-        <!-- bottom nav -->
+
         <nav class="navbar navbar-expand-lg navbar-light justify-content-center">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent"
