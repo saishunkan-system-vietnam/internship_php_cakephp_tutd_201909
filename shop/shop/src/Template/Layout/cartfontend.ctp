@@ -62,6 +62,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--</script>-->
 <!-- //script for show signin and signup modal -->
 <!-- smooth dropdown -->
+<script src="js/jquery-2.2.3.min.js"></script>
+<!-- //js -->
+<!-- smooth dropdown -->
 <script>
     $(document).ready(function () {
         $('ul li.dropdown').hover(function () {
@@ -90,61 +93,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     }
 </script>
 <!-- script for password match -->
-<!-- Banner Responsiveslides -->
-<script src="js/responsiveslides.min.js"></script>
-<script>
-    // You can also use "$(window).load(function() {"
-    $(function () {
-        // Slideshow 4
-        $("#slider3").responsiveSlides({
-            auto: false,
-            pager: true,
-            nav: false,
-            speed: 500,
-            namespace: "callbacks",
-            before: function () {
-                $('.events').append("<li>before event fired.</li>");
-            },
-            after: function () {
-                $('.events').append("<li>after event fired.</li>");
-            }
-        });
-
-    });
-</script>
-<!-- // Banner Responsiveslides -->
-<!-- Product slider Owl-Carousel-JavaScript -->
-<script src="js/owl.carousel.js"></script>
-<script>
-    var owl = $('.owl-carousel');
-    owl.owlCarousel({
-        items: 4,
-        loop: false,
-        margin: 10,
-        autoplay: false,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: false,
-        responsive: {
-            320: {
-                items: 1,
-            },
-            568: {
-                items: 2,
-            },
-            991: {
-                items: 3,
-            },
-            1050: {
-                items: 4
-            }
-        }
-    });
-</script>
-<!-- //Product slider Owl-Carousel-JavaScript -->
 <!-- cart-js -->
-<script src="js/minicart.js">
-    <!--    --><?php //echo $this->Html->script('minicart.js')?>
-</script>
+<script src="js/minicart.js"></script>
 <script>
     hub.render();
 
@@ -154,17 +104,59 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         if (this.subtotal() > 0) {
             items = this.items();
 
-            for (i = 0, len = items.length; i < len; i++) {
-            }
+            for (i = 0, len = items.length; i < len; i++) {}
         }
     });
 </script>
 <!-- //cart-js -->
+<!--quantity-->
+<script>
+    $('.value-plus').on('click', function () {
+        var divUpd = $(this).parent().find('.value'),
+            newVal = parseInt(divUpd.text(), 10) + 1;
+        divUpd.text(newVal);
+    });
+
+    $('.value-minus').on('click', function () {
+        var divUpd = $(this).parent().find('.value'),
+            newVal = parseInt(divUpd.text(), 10) - 1;
+        if (newVal >= 1) divUpd.text(newVal);
+    });
+</script>
+<!--quantity-->
+<!-- FadeOut-Script -->
+<script>
+    $(document).ready(function (c) {
+        $('.close1').on('click', function (c) {
+            $('.rem1').fadeOut('slow', function (c) {
+                $('.rem1').remove();
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function (c) {
+        $('.close2').on('click', function (c) {
+            $('.rem2').fadeOut('slow', function (c) {
+                $('.rem2').remove();
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function (c) {
+        $('.close3').on('click', function (c) {
+            $('.rem3').fadeOut('slow', function (c) {
+                $('.rem3').remove();
+            });
+        });
+    });
+</script>
+<!--// FadeOut-Script -->
+
 <!-- start-smooth-scrolling -->
-<!--<script src="js/move-top.js"></script>-->
-<?php echo $this->Html->script('move-top.js') ?>
-<!--<script src="js/easing.js"></script>-->
-<?php echo $this->Html->script('easing.js') ?>
+<script src="js/move-top.js"></script>
+<script src="js/easing.js"></script>
 <script>
     jQuery(document).ready(function ($) {
         $(".scroll").click(function (event) {
@@ -188,21 +180,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             easingType: 'linear'
         };
         */
-
         $().UItoTop({
             easingType: 'easeOutQuart'
         });
 
     });
 </script>
-<!--<script src="js/SmoothScroll.min.js"></script>-->
-<?php echo $this->Html->script('SmoothScroll.min.js') ?>
+<script src="js/SmoothScroll.min.js"></script>
 <!-- //smooth-scrolling-of-move-up -->
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<!--<script src="js/bootstrap.js"></script>-->
-<?php echo $this->Html->script('bootstrap.js') ?>
+<script src="js/bootstrap.js"></script>
 
 
 

@@ -84,7 +84,7 @@ use Cake\Http\Session\DatabaseSession;
                 </div>
                 <div class="desc_single">
                     <h5>Mô tả</h5>
-                    <p><?php echo $products->description; ?></p>
+                    <p><?php echo $products->description;?></p>
                 </div>
                 <div class="d-sm-flex justify-content-between">
                 </div>
@@ -96,8 +96,10 @@ use Cake\Http\Session\DatabaseSession;
                             <input type="hidden" name="hub_item" value=" Formal Men's Blazer">
                             <input type="hidden" name="amount" value="15.99">
                             <button type="button" class="hub-cart phub-cart btn">
-                                <a href="/detailclient/addToCart/<?= $products['id'] ?>"> <i class="fa fa-cart-plus"
-                                                                                             aria-hidden="true">Thêm giỏ
+                                <a href=""
+                                   onclick="return confirm('Bạn muốn thêm vào giỏ hàng.')"> <i
+                                        class="fa fa-cart-plus"
+                                        aria-hidden="true">Thêm giỏ
                                         hàng</i></a>
                             </button>
                             <a href="" data-toggle="modal" data-target="#myModal1">
@@ -122,7 +124,7 @@ use Cake\Http\Session\DatabaseSession;
                     <div class="col-lg-3 col-sm-6 p-0">
                         <div class="card product-men p-3">
                             <div class="men-thumb-item">
-                                <img src="<?php echo $relate['image'] ?>" alt="img" class="card-img-top">
+                                <img src="<?php echo $relate['image'] ?>" alt="img" class="card-img-top" style="height: 350px">
                                 <div class="men-cart-pro">
                                     <div class="inner-men-cart-pro">
                                         <a href="/pages/detail/<?= $relate['id'] ?>" class="link-product-add-cart">Quick

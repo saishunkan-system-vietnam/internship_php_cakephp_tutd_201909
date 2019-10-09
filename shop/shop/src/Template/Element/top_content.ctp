@@ -28,7 +28,7 @@
             <img class="img-fluid" src="<?php echo $represent['image']?>" alt="">
             <div class="overlay">
                 <h5><?php echo $represent['name']?></h5>
-                <a class="info" href="women.html">Shop Now</a>
+                <a class="info" href="/pages/product/<?php $represent['id'] ?>">Shop Now</a>
             </div>
         </div>
     </div>

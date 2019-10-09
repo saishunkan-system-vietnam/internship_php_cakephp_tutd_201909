@@ -8,6 +8,7 @@ use Cake\Event\Event;
 use Cake\Cache\Cache;
 use App\Controller\AppController;
 use Cake\Http\Session;
+use Symfony\Component\VarDumper\Dumper\DataDumperInterface;
 use function mysql_xdevapi\getSession;
 
 use Cake\Core\Configure;
@@ -214,9 +215,11 @@ class DetailClientController extends AppController
             }
             $this->getRequest()->getSession()->write('total', $total);
             $this->set(compact('total'));
+//            $this->redirect('cart');
         } else {
             echo 'sai id';
         }
+//        $this->redirect($this->referer());
     }
 
     public function viewCart()
@@ -250,8 +253,48 @@ class DetailClientController extends AppController
         $payment = $this->getRequest()->getSession()->read('payment');
 //      dd($payment);
         $this->set(compact('cart', 'payment'));
+    }
 
+    public function emptycart()
+    {
+        $this->getRequest()->getSession()->delete('cart');
+        $this->getRequest()->getSession()->delete('total');
+        $this->getRequest()->getSession()->delete('payment');
+        $this->redirect($this->referer());
+    }
 
+    public function remove()
+    {
+        $id = $this->request->getParam('id');
+//        $this->getRequest()->getSession()->delete('cart.' . $id);
+//        dd($_SESSION['cart']);
+        $cart = $this->getRequest()->getSession()->read('cart');
+        foreach ($_SESSION['cart'] as $key => $value) {
+//            dd($value['id']);
+            if ($value['id'] == $id) {
+                unset($_SESSION['cart'][$key]);
+            }
+        }
+
+        if (empty($cart)) {
+            $this->emptycart();
+        } else {
+            $total = 0;
+            foreach ($cart as $product) {
+//                dd($dataCart[$iUpdate]['quantity']);
+//                dd($product['quantity']);
+                $total += $product['quantity'] * $product['sale'];
+                $this->getRequest()->getSession()->write('total', $total);
+            }
+            $this->redirect($this->referer());
+        }
+    }
+
+    public function updatecart()
+    {
+        $cart = $this->getRequest()->getSession()->read('cart');
+        dd($cart);
+        $this->redirect('cart');
     }
 
     public function detail()

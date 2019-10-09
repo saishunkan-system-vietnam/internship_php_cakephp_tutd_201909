@@ -99,8 +99,11 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/pages/about/:id', ['controller' => 'Pages', 'action' => 'detail']);
     $routes->connect('/pages/contact', ['controller' => 'ContactClient', 'action' => 'contact']);
     $routes->connect('/pages/blog/:id', ['controller' => 'Pages', 'action' => 'blog']);
-    $routes->connect('/detailclient/addToCart/:id', ['controller' => 'DetailClient', 'action' => 'detail']);
+//    $routes->connect('/detailclient/addToCart/:id', ['controller' => 'DetailClient', 'action' => 'detail']);
     $routes->connect('/cart', ['controller'=>'DetailClient','action'=>'viewCart']);
+    $routes->connect('/detailclient/remove/:id', ['controller' => 'DetailClient', 'action' => 'remove']);
+    $routes->connect('/detailclient/update/', ['controller' => 'DetailClient', 'action' => 'upcatecart']);
+    $routes->connect('/pages/product/', ['controller' => 'ProductsClient', 'action' => 'product']);
 
 //    $routes->connect('cate')
 

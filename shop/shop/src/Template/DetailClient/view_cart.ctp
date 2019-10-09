@@ -13,7 +13,7 @@ if ($this->getRequest()->getSession()->check('cart')):
             <li class="breadcrumb-item">
                 <a href="index.html">Home</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+            <li class="breadcrumb-item active" aria-current="page">Gio Hang</li>
         </ol>
     </nav>
     <!-- //breadcrumbs -->
@@ -54,7 +54,7 @@ if ($this->getRequest()->getSession()->check('cart')):
                                     <div class="quantity">
                                         <div class="quantity-select">
                                             <div class="entry value-minus">&nbsp;</div>
-                                            <div class="entry value">
+                                            <div class="entry value" name="quantity[]">
                                                 <span><?= $pr['quantity'] ?></span>
                                             </div>
                                             <div class="entry value-plus active">&nbsp;</div>
@@ -66,7 +66,10 @@ if ($this->getRequest()->getSession()->check('cart')):
                                 <td class="invert"><?php echo $pr['quantity'] * $pr['sale'] ?></td>
                                 <td class="invert">
                                     <div class="rem">
-                                        <div class="close1"></div>
+                                        <a href="detailclient/remove/<?= $pr['id'] ?>"
+                                           onclick="return confirm('Bạn có chắc chăn muốn xóa')">
+                                            <div class="close1"></div>
+                                        </a>
                                     </div>
 
                                 </td>
@@ -77,11 +80,16 @@ if ($this->getRequest()->getSession()->check('cart')):
                         </tbody>
 
                     </table>
-                    <div style="width: 110px;height: 40px;background-color: yellow;font-size: 15px;color: red;line-height: 40px;font-weight: bold;text-align: center;margin-top: 10px;float: left">
-                        <a href="">Xóa sản phẩm</a></div>
-
-                    <div style="width: 160px;height: 40px;background-color: red;font-size: 15px;color: white;line-height: 40px;font-weight: bold;text-align: center;margin-top: 10px;float: right">
-                        <a href="">Update sản phẩm</a></div>
+                    <!--                    <div style="width: 110px;height: 40px;background-color: yellow;font-size: 15px;color: red;line-height: 40px;font-weight: bold;text-align: center;margin-top: 10px;float: left">-->
+                    <!--                        <a href="">Xóa sản phẩm</a></div>-->
+                    <a href="detailclient/emptycart">
+                        <button type="submit" style="height: 40px;font-weight: bold;font-size: 14px;margin-top: 10px;">
+                            Làm rỗng giỏ hàng
+                        </button>
+                    </a>
+                    <a href="detailclient/updatecart">
+                        <div style="width: 127px;height: 40px;float:right;margin-top:20px;background-color: #BDBDBD;font-size: 12px;font-weight: bold;text-align: center;line-height: 40px">Update giỏ hàng</div>
+                    </a>
                 </div>
                 <div class="row checkout-left mt-5">
                     <div class="col-md-4 checkout-left-basket">
@@ -90,7 +98,7 @@ if ($this->getRequest()->getSession()->check('cart')):
                             <?php foreach ($cart as $sp): ?>
                                 <li><?php echo $sp['name'] ?>
                                     <i>- <?= $sp['quantity'] ?></i>
-                                    <span><?php echo $pr['quantity'] * $pr['sale'] ?> </span>
+                                    <span><?php echo $sp['sale'] * $sp['quantity'] ?></span>
                                 </li>
                             <?php endforeach; ?>
                             <li>Total
@@ -149,5 +157,6 @@ if ($this->getRequest()->getSession()->check('cart')):
         </div>
     </section>
 <?php else: ?>
-    Quay ve <?php $this->Html->link('trang chu', '/') ?> de tham sach vao gio hang.
+    <p style="text-align: center;padding-bottom: 20px;word-spacing:2px">Quay về <a href="http://localhost:8765">Trang
+            chủ</a> để thêm sản phẩm vào giỏ hàng.</p>
 <?php endif; ?>

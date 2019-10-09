@@ -27,7 +27,6 @@
                                         <div class="inner-men-cart-pro">
                                             <a href="/pages/detail/<?= $products['id'] ?>"
                                                class="link-product-add-cart">Quick View</a>
-
                                         </div>
                                     </div>
                                 </div>
@@ -57,7 +56,6 @@
                         </div>
                     <?php endforeach; ?>
 
-
                     <div class="item">
                         <div class="product-men p-3 text-center">
                             <img src="images/p2.png" class="img-responsive" alt=""/>
@@ -68,9 +66,7 @@
             </div>
 
         </div>
-
     </div>
-
 </section>
 <!-- //product tabs -->
 <!-- insta posts -->
