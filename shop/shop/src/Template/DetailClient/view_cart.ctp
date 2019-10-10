@@ -88,7 +88,10 @@ if ($this->getRequest()->getSession()->check('cart')):
                         </button>
                     </a>
                     <a href="detailclient/updatecart">
-                        <div style="width: 127px;height: 40px;float:right;margin-top:20px;background-color: #BDBDBD;font-size: 12px;font-weight: bold;text-align: center;line-height: 40px">Update giỏ hàng</div>
+                        <div
+                            style="width: 127px;height: 40px;float:right;margin-top:20px;background-color: #BDBDBD;font-size: 12px;font-weight: bold;text-align: center;line-height: 40px">
+                            Update giỏ hàng
+                        </div>
                     </a>
                 </div>
                 <div class="row checkout-left mt-5">
@@ -109,45 +112,53 @@ if ($this->getRequest()->getSession()->check('cart')):
                     </div>
                     <div class="col-md-8 address_form">
                         <h4>Billing Address</h4>
-                        <form action="payment.html" method="post" class="creditly-card-form shopf-sear-headinfo_form">
+                        <form action="" method="post" class="creditly-card-form shopf-sear-headinfo_form">
                             <div class="creditly-wrapper wrapper">
                                 <div class="information-wrapper">
                                     <div class="first-row form-group">
                                         <div class="controls">
-                                            <label class="control-label">Full name: </label>
-                                            <input class="billing-address-name form-control" type="text" name="name"
+                                            <label class="control-label">Username: </label>
+                                            <input class="billing-address-name form-control" type="text" name="username"
                                                    placeholder="Full name">
                                         </div>
                                         <div class="card_number_grids">
                                             <div class="card_number_grid_left">
                                                 <div class="controls">
-                                                    <label class="control-label">Mobile number:</label>
-                                                    <input class="form-control" type="text" placeholder="Mobile number">
+                                                    <label class="control-label">Phone:</label>
+                                                    <input class="form-control" type="phone" placeholder="Mobile number" name="phone">
                                                 </div>
                                             </div>
                                             <div class="card_number_grid_right">
                                                 <div class="controls">
-                                                    <label class="control-label">Landmark: </label>
-                                                    <input class="form-control" type="text" placeholder="Landmark">
+                                                    <label class="control-label">Email </label>
+                                                    <input class="form-control" type="email" placeholder="Email" name="email">
                                                 </div>
                                             </div>
                                             <div class="clear"></div>
                                         </div>
                                         <div class="controls">
-                                            <label class="control-label">Town/City: </label>
-                                            <input class="form-control" type="text" placeholder="Town/City">
+                                            <label class="control-label">Address </label>
+                                            <input class="form-control" type="text" placeholder="Address" name="addr">
+                                        </div>
+
+                                        <div class="controls">
+                                            <label class="control-label">Note </label>
+                                            <!--                                            <input class="form-control" type="text" placeholder="Note">-->
+                                            <textarea name="note" placeholder="Note" class="form-control"></textarea>
                                         </div>
                                         <div class="controls">
-                                            <label class="control-label">Address type: </label>
+                                            <label class="control-label">Delivery: </label>
                                             <select class="form-control option-fieldf">
-                                                <option>Office</option>
-                                                <option>Home</option>
-                                                <option>Commercial</option>
-
+                                                <option>Giao hàng</option>
+                                                <option>1 ngày</option>
+                                                <option>3 ngày</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <button class="submit check_out">place order</button>
+<!--                                    <button class="submit check_out">place order</button>-->
+                                    <div class="right-w3l">
+                                        <input type="submit" class="form-control" value="Đặt hàng" name="">
+                                    </div>
                                 </div>
                             </div>
                         </form>

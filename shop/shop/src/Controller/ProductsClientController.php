@@ -39,7 +39,7 @@ class ProductsClientController extends AppController
         $productss = $this->Products->find()
             ->select(['id','image', 'product_name', 'price', 'sale', 'description', 'size', 'slug', 'status', 'categories_id'])
             ->where(['status' => 1])
-            ->where(['categories_id' => 24])->toArray();
+            ->toArray();
 //        dd($productss);
         $this->set(compact('productss'));
 //        dd($productss);

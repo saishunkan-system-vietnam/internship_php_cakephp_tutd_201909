@@ -7,8 +7,9 @@
             <ul id="clothing-nav" class="nav nav-tabs tabs-style-line" role="tablist">
                 <?php foreach ($title as $title): ?>
                     <li class="nav-item">
-                        <a class="nav-link active" href="" id="women-tab" role="tab" data-toggle="tab"
-                           aria-controls="women" aria-expanded="true"><?php echo $title['name'] ?></a>
+<!--                        --><?php //dd($title['id']); ?>
+                        <a class="nav-link active" href="/pages/product/<?php $title['id'] ?>"
+                         ><?php echo $title['name'] ?></a>
                     </li>
                 <?php endforeach; ?>
             </ul>

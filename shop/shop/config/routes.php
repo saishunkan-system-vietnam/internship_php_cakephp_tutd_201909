@@ -104,6 +104,9 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/detailclient/remove/:id', ['controller' => 'DetailClient', 'action' => 'remove']);
     $routes->connect('/detailclient/update/', ['controller' => 'DetailClient', 'action' => 'upcatecart']);
     $routes->connect('/pages/product/', ['controller' => 'ProductsClient', 'action' => 'product']);
+    $routes->connect('/cart/bills/:id', ['controller'=>'DetailClient','action'=>'bills']);
+
+
 
 //    $routes->connect('cate')
 

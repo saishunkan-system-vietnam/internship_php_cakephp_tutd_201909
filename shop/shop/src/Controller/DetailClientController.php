@@ -30,6 +30,7 @@ class DetailClientController extends AppController
         $this->loadModel('Logolast');
         $this->loadModel('Usersclient');
         $this->loadModel('Contact');
+        $this->loadModel('Orders');
     }
 
     public function logo()
@@ -232,6 +233,7 @@ class DetailClientController extends AppController
         $this->logolast();
         $this->users();
         $this->loginclient();
+        $this->oders();
 //        $this->addToCart();
 
         $cart = $this->getRequest()->getSession()->read('cart');
@@ -295,6 +297,43 @@ class DetailClientController extends AppController
         $cart = $this->getRequest()->getSession()->read('cart');
         dd($cart);
         $this->redirect('cart');
+    }
+
+    public function oders()
+    {
+        $cart = $this->getRequest()->getSession()->read('cart');
+//        dd($cart);
+
+        $order = $this->Orders->newEntity();
+        if ($this->request->is('post')) {
+            $input['username'] = $this->getRequest()->getData('username');
+            $input['phone'] = $this->getRequest()->getData('phone');
+            $input['email'] = $this->getRequest()->getData('email');
+            $input['addr'] = $this->getRequest()->getData('addr');
+            $input['note'] = $this->getRequest()->getData('note');
+            $input['delivery'] = $this->getRequest()->getData('delivery');
+            $this->Orders->patchEntity($order, $input);
+            if ($this->Orders->save($order)) {
+                $this->set(compact('order'));
+                $this->Flash->success(__('ok'));
+            } else {
+                $error = $order->getErrors();
+                dd($error);
+                $this->set('err', $error);
+            }
+        }
+        $this->set(compact('order'));
+    }
+
+    public function bills()
+    {
+        $this->logo();
+        $this->slider();
+        $this->represent();
+        $this->title();
+        $this->logolast();
+        $this->users();
+        $this->loginclient();
     }
 
     public function detail()

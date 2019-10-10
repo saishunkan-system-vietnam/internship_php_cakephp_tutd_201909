@@ -192,6 +192,7 @@ class PagesController extends AppController
             $this->set('showEmail', $showEmail);
         }
     }
+
     public function index()
     {
         $this->logo();
