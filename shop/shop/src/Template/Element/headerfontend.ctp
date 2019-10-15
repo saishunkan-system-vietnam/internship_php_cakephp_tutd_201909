@@ -1,5 +1,5 @@
 <p style="text-align: right;padding-right: 500px;color: red;font-weight: bold;padding-top: 16px">Xin chào : <span
-        style="color: #22dd99"><?php if (isset($showEmail->email)) echo $showEmail->email ?></span>|<a href="">Thoát</a>
+        style="color: #22dd99"><?php  if (isset($showEmail->email)) echo $showEmail->email ?></span>|<a href="">Thoát</a>
 </p>
 <header>
     <div class="container">
@@ -66,7 +66,7 @@
                             <!--                            <form action="" method="post">-->
                             <!--                                <input type="hidden" name="cmd" value="_cart">-->
                             <!--                                <input type="hidden" name="display" value="1">-->
-                            <a href="cart">
+                            <a href="/cart">
                                 <button class="btn top_hub_cart mt-1" type="submit" name="submit" value="" title="Cart">
                                     <i class="fas fa-shopping-bag"></i>
                                 </button>

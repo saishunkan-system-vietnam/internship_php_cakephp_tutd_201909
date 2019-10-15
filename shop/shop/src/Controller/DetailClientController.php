@@ -111,6 +111,7 @@ class DetailClientController extends AppController
     //login client
     public function loginclient()
     {
+
         if (isset($_POST['submit'])) {
             $email = $_POST['email'];
             $password = $_POST['password'];
@@ -120,7 +121,11 @@ class DetailClientController extends AppController
                 ->orwhere(['password' => $password])
                 ->all()->toArray();
             $showEmail = $userr[0];
+
+//            $showEmail=$this->getRequest()->getSession()->write('userr',$userr);
+//            dd($showEmail);
             $this->set('showEmail', $showEmail);
+
         }
     }
 
@@ -240,18 +245,19 @@ class DetailClientController extends AppController
 //dd($cart);
 
         $total = 0;
-        foreach ($cart as $product) {
+        if (isset($cart)){
+            foreach ($cart as $product) {
 //                dd($dataCart[$iUpdate]['quantity']);
-//                dd($product['quantity']);
-            $total += $product['quantity'] * $product['sale'];
+//                dd($product);
+                $total += $product['quantity'] * $product['sale'];
+            }
         }
+
 
         $this->getRequest()->getSession()->write('total', $total);
         $this->set(compact('total'));
         $this->set(compact('cart'));
-
 //        dd($totall);
-
         $payment = $this->getRequest()->getSession()->read('payment');
 //      dd($payment);
         $this->set(compact('cart', 'payment'));
@@ -263,6 +269,7 @@ class DetailClientController extends AppController
         $this->getRequest()->getSession()->delete('total');
         $this->getRequest()->getSession()->delete('payment');
         $this->redirect($this->referer());
+
     }
 
     public function remove()
@@ -277,7 +284,6 @@ class DetailClientController extends AppController
                 unset($_SESSION['cart'][$key]);
             }
         }
-
         if (empty($cart)) {
             $this->emptycart();
         } else {
@@ -303,7 +309,8 @@ class DetailClientController extends AppController
     {
         $cart = $this->getRequest()->getSession()->read('cart');
 //        dd($cart);
-
+        $total = $this->getRequest()->getSession()->read('total');
+//        dd($total);
         $order = $this->Orders->newEntity();
         if ($this->request->is('post')) {
             $input['username'] = $this->getRequest()->getData('username');
@@ -311,11 +318,14 @@ class DetailClientController extends AppController
             $input['email'] = $this->getRequest()->getData('email');
             $input['addr'] = $this->getRequest()->getData('addr');
             $input['note'] = $this->getRequest()->getData('note');
-            $input['delivery'] = $this->getRequest()->getData('delivery');
+            $input['order_info'] = json_encode($this->getRequest()->getSession()->read('cart'));
+            $input['total'] = $this->getRequest()->getSession()->read('total');
             $this->Orders->patchEntity($order, $input);
             if ($this->Orders->save($order)) {
                 $this->set(compact('order'));
                 $this->Flash->success(__('ok'));
+                $this->set(compact('order'));
+                $this->getRequest()->getSession()->delete('cart');
             } else {
                 $error = $order->getErrors();
                 dd($error);
@@ -323,17 +333,27 @@ class DetailClientController extends AppController
             }
         }
         $this->set(compact('order'));
+//        $this->redirect($this->emptycart());
     }
 
-    public function bills()
+    public function ordervieww()
     {
+//        $cart = $this->getRequest()->getSession()->read('cart');
+//        dd($cart);
+
+    }
+
+    public function orderview()
+    {
+
         $this->logo();
         $this->slider();
         $this->represent();
-        $this->title();
+        $this->ordervieww();
         $this->logolast();
         $this->users();
         $this->loginclient();
+
     }
 
     public function detail()
@@ -348,5 +368,8 @@ class DetailClientController extends AppController
         $this->detaill();
         $this->addToCart();
         $this->viewCart();
+        $this->orderview();
+        $this->oders();
+
     }
 }

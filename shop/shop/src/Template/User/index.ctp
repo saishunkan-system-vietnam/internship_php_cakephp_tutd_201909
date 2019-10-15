@@ -73,9 +73,11 @@
                                 <?php endif; ?>
                             </td>
                             <td class=" last">
-                                <a href="/admin/user/edit/<?= $user->id ?>">Edit | </a>
+                                <a href="/admin/user/edit/<?= $user->id ?>" class="badge badge-success"
+                                   style="background-color: #22dd99">Edit  </a>
                                 <a href="/admin/user/delete/<?= $user->id ?>"
-                                   onclick="return confirm('Bạn có chắc chăn muốn xóa')">Delete</a>
+                                   onclick="return confirm('Bạn có chắc chăn muốn xóa')" class="badge badge-danger"
+                                   style="background-color: #a61717">Delete</a>
                             </td>
                         </tr>
                     <?php

@@ -94,6 +94,8 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('admin/products/delete/:id', ['controller' => 'Products', 'action' => 'delete']);
     $routes->connect('admin/products/search', ['controller' => 'Products', 'action' => 'search']);
 
+    $routes->connect('admin/order',['controller'=>'Orders','action'=>'index']);
+
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'index', 'home']);
     $routes->connect('/pages/detail/:id', ['controller' => 'DetailClient', 'action' => 'detail']);
     $routes->connect('/pages/about/:id', ['controller' => 'Pages', 'action' => 'detail']);
@@ -105,6 +107,9 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/detailclient/update/', ['controller' => 'DetailClient', 'action' => 'upcatecart']);
     $routes->connect('/pages/product/', ['controller' => 'ProductsClient', 'action' => 'product']);
     $routes->connect('/cart/bills/:id', ['controller'=>'DetailClient','action'=>'bills']);
+//    $routes->connect('/order/:id',['controller'=>'Orders','action'=>'detail']);
+    $routes->connect('/order/:id',['controller'=>'DetailClient','action'=>'orderview']);
+
 
 
 

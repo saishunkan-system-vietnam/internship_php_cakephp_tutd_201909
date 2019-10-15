@@ -5,7 +5,7 @@
             <ul class="nav navbar-right panel_toolbox">
             </ul>
             <div class="title_right">
-                <form action="<?php echo $this->Url->build(['controller' => 'Logo', 'action' => 'search']) ?>"
+                <form action="<?php echo $this->Url->build(['controller' => 'Orders', 'action' => 'search']) ?>"
                       method="get">
                     <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                         <div class="input-group">
@@ -36,8 +36,13 @@
                             <input type="checkbox" id="check-all" class="flat selectall">
                         </th>
                         <th class="column-title">Id</th>
-                        <th class="column-title">Link</th>
-                        <th class="column-title">Image</th>
+                        <th class="column-title">Sản phẩm</th>
+                        <th class="column-title">Total</th>
+                        <th class="column-title">Name</th>
+                        <th class="column-title">Phone</th>
+                        <th class="column-title">Email</th>
+                        <th class="column-title">Địa chỉ</th>
+                        <th class="column-title">Ghi chú</th>
                         <th class="column-title">Status</th>
                         <th class="column-title no-link last"><span class="nobr">Action</span>
                         </th>
@@ -49,27 +54,42 @@
                     </thead>
                     <tbody>
                     <?php
-                    foreach ($logo as $logo):
+                    foreach ($orders as $orders):
                         ?>
                         <tr class="even pointer">
                             <td class="a-center ">
                                 <input type="checkbox" class="flat selectbox" name="ids[]"
-                                       value="<?php echo $logo->id ?>">
+                                       value="<?php echo $orders->id ?>">
                             </td>
-                            <td class=" "><?php echo $logo->id; ?></td>
-                            <td class=" "><?php echo $logo->link; ?></td>
-                            <td><img src="<?php echo $logo->image; ?>" style="width: 60px;height: 60px"></td>
+                            <td class=" "><?php echo $orders->id; ?></td>
+                            <?php $t = 0; ?>
+                            <td class=" "><?php foreach (json_decode($orders->order_info) as $o): ?>
+                                    <p style="color: black;font-weight: bold;font-size: 12px"><?php echo $t++; ?></p>
+                                    <p><strong>Name</strong> :<?= $o->name ?></p>
+                                    <p><strong>Price</strong> :<?= $o->sale ?></p>
+                                    <p>Ảnh<img style="width: 50px;height: 60px;margin-left: 10px"
+                                               src="<?php echo $o->image; ?>"></p>
+                                    <p><strong>Số lượng</strong> :<?= $o->quantity ?></p>
+                                    -------------------------
+                                <?php endforeach; ?>
+                            </td>
+                            <td class=" "><?php echo $orders->total; ?></td>
+                            <td class=" "><?php echo $orders->username; ?></td>
+                            <td class=" "><?php echo $orders->phone; ?></td>
+                            <td class=" "><?php echo $orders->email; ?></td>
+                            <td class=" "><?php echo $orders->addr; ?></td>
+                            <td class=" "><?php echo $orders->note; ?></td>
                             <td class="">
-                                <?php if ($logo->status == 0): ?>
-                                    <span style="color: red">Ân</span>
+                                <?php if ($orders->status == 0): ?>
+                                    <span style="color: red">Chưa xử lý</span>
                                 <?php else: ?>
-                                    <span style="color: green">Hiện</span>
+                                    <span style="color: green">Đã xử lý</span>
                                 <?php endif; ?>
                             </td>
                             <td class=" last">
-                                <a href="/admin/logo/edit/<?= $logo->id ?>" class="badge badge-success"
+                                <a href="/admin/logo/edit/<?= $orders->id ?>" class="badge badge-success"
                                    style="background-color: #22dd99">Edit </a>
-                                <a href="/admin/logo/delete/<?= $logo->id ?>"
+                                <a href="/admin/logo/delete/<?= $orders->id ?>"
                                    onclick="return confirm('Bạn có chắc chăn muốn xóa')" class="badge badge-danger"
                                    style="background-color: #a61717">Delete</a>
                             </td>
@@ -109,4 +129,5 @@ $paginator = $this->Paginator->setTemplates([
 
     </ul>
 </nav>
+
 

@@ -64,9 +64,11 @@
                             <td class=""><?php echo $blogs->content; ?></i></td>
                             <td><img src="<?php echo $blogs->image; ?>" style="width: 60px;height: 60px"></td>
                             <td class=" last">
-                                <a href="/admin/blogs/edit/<?= $blogs->id ?>">Edit | </a>
+                                <a href="/admin/blogs/edit/<?= $blogs->id ?>" lass="badge badge-success"
+                                   style="background-color: #22dd99">Edit </a>
                                 <a href="/admin/blogs/delete/<?= $blogs->id ?>"
-                                   onclick="return confirm('Bạn có chắc chăn muốn xóa')">Delete</a>
+                                   onclick="return confirm('Bạn có chắc chăn muốn xóa')" class="badge badge-danger"
+                                   style="background-color: #a61717" >Delete</a>
                             </td>
                         </tr>
                     <?php

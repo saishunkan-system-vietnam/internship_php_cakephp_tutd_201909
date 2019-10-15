@@ -99,7 +99,6 @@ class UserController extends AppController
         $this->paginate = [
             'limit' => '3'
         ];
-
         $user = $this->paginate($this->User->find()->where(function ($exp, $query) use ($search) {
             return $exp->like('username', '%' . $search . '%');
         }));

@@ -69,9 +69,11 @@
                                 <?php endif; ?>
                             </td>
                             <td class=" last">
-                                <a href="/admin/logolast/edit/<?= $logoo->id ?>">Edit | </a>
+                                <a href="/admin/logolast/edit/<?= $logoo->id ?>" class="badge badge-success"
+                                   style="background-color: #22dd99" >Edit </a>
                                 <a href="/admin/logolast/delete/<?= $logoo->id ?>"
-                                   onclick="return confirm('Bạn có chắc chăn muốn xóa')">Delete</a>
+                                   onclick="return confirm('Bạn có chắc chăn muốn xóa')" class="badge badge-danger"
+                                   style="background-color: #a61717">Delete</a>
                             </td>
                         </tr>
                     <?php

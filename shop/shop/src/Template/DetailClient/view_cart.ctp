@@ -1,7 +1,3 @@
-<?php
-//check xem co hang hay khong
-if ($this->getRequest()->getSession()->check('cart')):
-    ?>
 
     <div class="ibanner_w3 pt-sm-5 pt-3">
         <h4 class="head_agileinfo text-center text-capitalize text-center pt-5">
@@ -18,6 +14,10 @@ if ($this->getRequest()->getSession()->check('cart')):
     </nav>
     <!-- //breadcrumbs -->
     <!--checkout-->
+    <?php
+    //check xem co hang hay khong
+    if ($this->getRequest()->getSession()->check('cart')):
+        ?>
     <section class="checkout_wthree py-sm-5 py-3">
         <div class="container">
             <div class="check_w3ls">
@@ -125,13 +125,15 @@ if ($this->getRequest()->getSession()->check('cart')):
                                             <div class="card_number_grid_left">
                                                 <div class="controls">
                                                     <label class="control-label">Phone:</label>
-                                                    <input class="form-control" type="phone" placeholder="Mobile number" name="phone">
+                                                    <input class="form-control" type="phone" placeholder="Mobile number"
+                                                           name="phone">
                                                 </div>
                                             </div>
                                             <div class="card_number_grid_right">
                                                 <div class="controls">
                                                     <label class="control-label">Email </label>
-                                                    <input class="form-control" type="email" placeholder="Email" name="email">
+                                                    <input class="form-control" type="email" placeholder="Email"
+                                                           name="email">
                                                 </div>
                                             </div>
                                             <div class="clear"></div>
@@ -146,18 +148,11 @@ if ($this->getRequest()->getSession()->check('cart')):
                                             <!--                                            <input class="form-control" type="text" placeholder="Note">-->
                                             <textarea name="note" placeholder="Note" class="form-control"></textarea>
                                         </div>
-                                        <div class="controls">
-                                            <label class="control-label">Delivery: </label>
-                                            <select class="form-control option-fieldf">
-                                                <option>Giao hàng</option>
-                                                <option>1 ngày</option>
-                                                <option>3 ngày</option>
-                                            </select>
-                                        </div>
+
                                     </div>
-<!--                                    <button class="submit check_out">place order</button>-->
+                                    <!--                                    <button class="submit check_out">place order</button>-->
                                     <div class="right-w3l">
-                                        <input type="submit" class="form-control" value="Đặt hàng" name="">
+                                        <a href=""><input type="submit" class="form-control" value="Đặt hàng" name=""></a>
                                     </div>
                                 </div>
                             </div>

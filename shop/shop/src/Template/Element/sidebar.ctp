@@ -109,6 +109,15 @@
                 </ul>
 
                 <ul class="nav side-menu">
+                    <li><a><i class="glyphicon glyphicon-hand-up"></i> Đơn hàng <span
+                                class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><?php echo $this->Html->link('Danh sách ', ['controller' => 'OrderAdmin', 'action' => 'index']) ?></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav side-menu">
                     <li><a><i class="glyphicon glyphicon-hand-up"></i> Setting <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><?php echo $this->Html->link('Logo ', ['controller' => 'Logo', 'action' => 'index']) ?>

@@ -73,9 +73,11 @@
 
                             </td>
                             <td class=" last">
-                                <a href="/admin/slider/edit/<?= $slider->id ?>">Edit | </a>
+                                <a href="/admin/slider/edit/<?= $slider->id ?>" class="badge badge-success"
+                                   style="background-color: #22dd99">Edit  </a>
                                 <a href="/admin/slider/delete/<?= $slider->id ?>"
-                                   onclick="return confirm('Bạn có chắc chăn muốn xóa')">Delete</a>
+                                   onclick="return confirm('Bạn có chắc chăn muốn xóa')" class="badge badge-danger"
+                                   style="background-color: #a61717">Delete</a>
 
                             </td>
                         </tr>
