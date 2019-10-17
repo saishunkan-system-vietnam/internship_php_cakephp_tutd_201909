@@ -74,9 +74,11 @@
                             <td class=" "><?= $item['categories']['name']; ?></td>
                             <td class="">
                                 <?php if ($item->status == 0): ?>
-                                    <span style="color: red">Ân</span>
+                                    <span style="background-color: #a61717"
+                                          class="badge badge-pill badge-danger">Ân</span>
                                 <?php else: ?>
-                                    <span style="color: green">Hiển thi</span>
+                                    <span style="background-color: #2196F3"
+                                          class="badge badge-pill badge-success">Hiển</span>
                                 <?php endif; ?>
                             </td>
                             <td class=" last">
@@ -84,7 +86,7 @@
                                    style="background-color: #22dd99">Edit </a>
                                 <a href="/admin/products/delete/<?= $item['id'] ?>"
                                    onclick="return confirm('Bạn có chắc chăn muốn xóa')" class="badge badge-danger"
-                                   style="background-color: #a61717" >Delete</a>
+                                   style="background-color: #a61717">Delete</a>
                             </td>
                         </tr>
                     <?php

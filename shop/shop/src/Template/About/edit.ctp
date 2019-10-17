@@ -30,8 +30,10 @@
                                         class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="link" name="content" required="required"
-                                           class="form-control col-md-7 col-xs-12" placeholder="Nhập content" value="<?php if (isset($about->content)) echo $about->content;  ?>">
+<!--                                    <input type="text" id="link" name="content" required="required"-->
+<!--                                           class="form-control col-md-7 col-xs-12" placeholder="Nhập content" value="--><?php //if (isset($about->content)) echo $about->content;  ?><!--">-->
+                                    <textarea id="ckeditor" name="content" required="required" placeholder="Nhập content" ><?php if (isset($about->content)) echo $about->content;?></textarea>
+
                                     <?php if (isset($err['content'])): ?>
                                         <?php foreach ($err['content'] as $item): ?>
                                             <div><?= $item ?></div>
@@ -80,3 +82,10 @@
     </div>
 </div>
 <!-- /page content -->
+<script src="<?php echo SITE_URL; ?>js/ckeditor/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('ckeditor');
+    CKEDITOR.replace('ckeditor1');
+    CKEDITOR.replace('ckeditor3');
+
+</script>

@@ -44,9 +44,10 @@
                                         class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="text" name="text" data-validate-linked="email"
-                                           required="required" placeholder="Mô tả slider"
-                                           class="form-control col-md-7 col-xs-12">
+<!--                                    <input type="text" id="text" name="text" data-validate-linked="email"-->
+<!--                                           required="required" placeholder="Mô tả slider"-->
+<!--                                           class="form-control col-md-7 col-xs-12">-->
+                                    <textarea id="ckeditor" name="text" required="required" placeholder="Nhập text" ><?php if (isset($slider->text)) echo $slider->text;?></textarea>
                                     <?php if (isset($err['text'])): ?>
                                         <?php foreach ($err['text'] as $item): ?>
                                             <div><?= $item ?></div>
@@ -94,3 +95,10 @@
     </div>
 </div>
 <!-- /page content -->
+<script src="<?php echo SITE_URL; ?>js/ckeditor/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('ckeditor');
+    CKEDITOR.replace('ckeditor1');
+    CKEDITOR.replace('ckeditor3');
+
+</script>

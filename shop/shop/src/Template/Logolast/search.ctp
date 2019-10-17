@@ -63,9 +63,11 @@
                             <td><img src="<?php echo $logoo->image; ?>" style="width: 60px;height: 60px"></td>
                             <td class="">
                                 <?php if ($logoo->status == 0): ?>
-                                    <span style="color: red">Ân</span>
+                                    <span style="background-color: #a61717"
+                                          class="badge badge-pill badge-danger">Ân</span>
                                 <?php else: ?>
-                                    <span style="color: green">Hiện</span>
+                                    <span style="background-color: #2196F3"
+                                          class="badge badge-pill badge-success">Hiển</span>
                                 <?php endif; ?>
                             </td>
                             <td class=" last">

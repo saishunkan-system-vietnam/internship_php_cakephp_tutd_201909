@@ -65,9 +65,11 @@
                             <td class=""><?php echo $contact->email; ?></td>
                             <td class="">
                                 <?php if ($contact->status == 0): ?>
-                                    <span style="color: red">Ân</span>
+                                    <span style="background-color: #a61717"
+                                          class="badge badge-pill badge-danger">Ân</span>
                                 <?php else: ?>
-                                    <span style="color: green">Hiển thi</span>
+                                    <span style="background-color: #2196F3"
+                                          class="badge badge-pill badge-success">Hiển</span>
                                 <?php endif; ?>
                             </td>
                             <td class=" last">

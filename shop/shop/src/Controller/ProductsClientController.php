@@ -45,110 +45,6 @@ class ProductsClientController extends AppController
 //        dd($productss);
 //        dd($productss);
     }
-
-//    public function products()
-//    {
-//        //products
-//        $products = $this->Products->find()
-//            ->select(['id', 'product_name', 'image', 'price', 'sale', 'description', 'size', 'slug', 'categories_id', 'status'])
-//            ->where(['status' => 1])
-//            ->andwhere(['categories_id' => 24])
-//            ->limit(8)
-//            ->order(['id' => 'ASC'])->toArray();
-//        $this->set('products', $products);
-//    }
-
-    public function logo()
-    {
-        $logo = $this->Logo
-            ->find()
-            ->select('image', 'link')
-            ->where(['status' => 1]);
-        $this->set(compact('logo'));
-    }
-
-    public function slider()
-    {
-        $slider = $this->Slider
-            ->find()
-            ->select(['name', 'link', 'image', 'text', 'id'])
-            ->where(['status' => 1])
-            ->limit(1);
-
-        $this->set(compact('slider'));
-    }
-
-    //dai dien
-    public function represent()
-    {
-        $represent = $this->Represent
-            ->find()
-            ->select(['name', 'image', 'status'])
-            ->where(['status' => 1])
-            ->limit(3)
-            ->order(['id' => 'DESC']);
-        $this->set(compact('represent'));
-
-    }
-
-    //products-title
-    public function title()
-    {
-        $title = $this->Categories
-            ->find()
-            ->select(['id', 'name', 'parent_id', 'slug'])
-            ->where(['status' => 1])
-            ->limit(4)
-            ->order(['id' => 'DESC']);
-        $this->set(compact('title'));
-    }
-
-    //$logolast
-    public function logolast()
-    {
-        $logolast = $this->Logolast->find()
-            ->select(['id', 'link', 'image', 'text', 'status'])
-            ->where(['status' => 1])
-            ->limit(1)
-            ->order(['id' => 'DESC'])->toArray();
-        $this->set('logolast', $logolast);
-    }
-
-    public function users()
-    {
-        $users = $this->Usersclient->newEntity();
-        if ($this->request->is('post')) {
-            $input['name'] = $this->getRequest()->getData('name');
-            $input['email'] = $this->getRequest()->getData('email');
-            $input['password'] = md5($this->getRequest()->getData('password'));
-            $this->Usersclient->patchEntity($users, $input);
-            if ($this->Usersclient->save($users)) {
-                $this->set(compact('users'));
-                $this->Flash->success(__('ok'));
-            } else {
-                $error = $users->getErrors();
-                $this->set('err', $error);
-            }
-        }
-        $this->set(compact('users'));
-    }
-
-    //login client
-    public function loginclient()
-    {
-        if (isset($_POST['submit'])) {
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $userr = $this->Usersclient->find()
-                ->select(['id', 'name', 'email', 'password'])
-                ->where(['email' => $email])
-                ->orwhere(['password' => $password])
-                ->all()->toArray();
-            $showEmail = $userr[0];
-            $this->set('showEmail', $showEmail);
-        }
-    }
-
     public function product()
     {
         $this->logo();
@@ -159,7 +55,7 @@ class ProductsClientController extends AppController
         $this->users();
         $this->loginclient();
         $this->productss();
-//        $this->products();
+        $this->menu();
     }
 
 

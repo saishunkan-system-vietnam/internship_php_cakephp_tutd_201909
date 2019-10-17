@@ -75,7 +75,7 @@
                     <li><a><i class="glyphicon glyphicon-user"></i> About <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><?php echo $this->Html->link('Danh sách about', ['controller' => 'About', 'action' => 'index']) ?></li>
-                            ->
+
                             <li><?php echo $this->Html->link('Thêm about', ['controller' => 'About', 'action' => 'add']) ?></li>
                         </ul>
                     </li>
@@ -112,7 +112,7 @@
                     <li><a><i class="glyphicon glyphicon-hand-up"></i> Đơn hàng <span
                                 class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><?php echo $this->Html->link('Danh sách ', ['controller' => 'OrderAdmin', 'action' => 'index']) ?></li>
+                            <li><?php echo $this->Html->link('Danh sách ', ['controller' => 'Orders', 'action' => 'index']) ?></li>
                         </ul>
                     </li>
                 </ul>

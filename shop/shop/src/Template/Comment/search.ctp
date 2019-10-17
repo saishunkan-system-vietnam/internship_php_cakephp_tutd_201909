@@ -5,7 +5,8 @@
             <ul class="nav navbar-right panel_toolbox">
             </ul>
             <div class="title_right">
-                <form action="<?php echo $this->Url->build(['controller'=>'Comment','action'=>'search'])?>" method="get">
+                <form action="<?php echo $this->Url->build(['controller' => 'Comment', 'action' => 'search']) ?>"
+                      method="get">
                     <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                         <div class="input-group">
                             <input type="search" class="form-control" placeholder="Search for..." name="q">
@@ -63,9 +64,11 @@
                             <td><img src="<?php echo $comment->image; ?>" style="width: 60px;height: 60px"></td>
                             <td class="">
                                 <?php if ($comment->status == 0): ?>
-                                    <span style="color: red">Ân</span>
+                                    <span style="background-color: #a61717"
+                                          class="badge badge-pill badge-danger">Ân</span>
                                 <?php else: ?>
-                                    <span style="color: green">Hiển</span>
+                                    <span style="background-color: #2196F3"
+                                          class="badge badge-pill badge-success">Hiển</span>
                                 <?php endif; ?>
                             </td>
                             <td class=" last">

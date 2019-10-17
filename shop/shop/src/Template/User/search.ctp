@@ -67,9 +67,11 @@
                             <td><img src="<?php echo $user->image; ?>" style="width: 60px;height: 60px"></td>
                             <td class="">
                                 <?php if ($user->status == 0): ?>
-                                    <span style="color: red">Người dùng</span>
+                                    <span style="background-color: #a61717"
+                                          class="badge badge-pill badge-danger">Người dùng</span>
                                 <?php else: ?>
-                                    <span style="color: green">Admin</span>
+                                    <span style="background-color: #a61717"
+                                          class="badge badge-pill badge-danger">Admin</span>
                                 <?php endif; ?>
                             </td>
                             <td class=" last">

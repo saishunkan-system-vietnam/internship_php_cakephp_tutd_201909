@@ -94,20 +94,32 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('admin/products/delete/:id', ['controller' => 'Products', 'action' => 'delete']);
     $routes->connect('admin/products/search', ['controller' => 'Products', 'action' => 'search']);
 
-    $routes->connect('admin/order',['controller'=>'Orders','action'=>'index']);
+
+    $routes->connect('orders',['controller'=>'Orders','action'=>'index']);
+    $routes->connect('admin/orders/delete/:id', ['controller' => 'Orders', 'action' => 'delete']);
+    $routes->connect('admin/orders/status/:id', ['controller' => 'Orders', 'action' => 'status']);
+    $routes->connect('admin/orders/status/done',['controller'=>'Orders','action'=>'done']);
+    $routes->connect('admin/orders/status/new',['controller'=>'Orders','action'=>'new']);
+    $routes->connect('admin/orders/status/new/delete/:id',['controller'=>'Orders','action'=>'deletenew']);
+    $routes->connect('admin/orders/status/done/delete/:id',['controller'=>'Orders','action'=>'deletedone']);
+
 
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'index', 'home']);
     $routes->connect('/pages/detail/:id', ['controller' => 'DetailClient', 'action' => 'detail']);
-    $routes->connect('/pages/about/:id', ['controller' => 'Pages', 'action' => 'detail']);
+    $routes->connect('/pages/about', ['controller' => 'AboutClient', 'action' => 'index']);
     $routes->connect('/pages/contact', ['controller' => 'ContactClient', 'action' => 'contact']);
-    $routes->connect('/pages/blog/:id', ['controller' => 'Pages', 'action' => 'blog']);
-//    $routes->connect('/detailclient/addToCart/:id', ['controller' => 'DetailClient', 'action' => 'detail']);
+    $routes->connect('/pages/blog', ['controller' => 'BlogClient', 'action' => 'blog']);
+    $routes->connect('/pages/logout/:id', ['controller' => 'Pages', 'action' => 'logout']);
+    $routes->connect('/pages/article_details/:id',['controller'=>'ArticlentDetails','action'=>'index']);
+
+
     $routes->connect('/cart', ['controller'=>'DetailClient','action'=>'viewCart']);
     $routes->connect('/detailclient/remove/:id', ['controller' => 'DetailClient', 'action' => 'remove']);
     $routes->connect('/detailclient/update/', ['controller' => 'DetailClient', 'action' => 'upcatecart']);
     $routes->connect('/pages/product/', ['controller' => 'ProductsClient', 'action' => 'product']);
     $routes->connect('/cart/bills/:id', ['controller'=>'DetailClient','action'=>'bills']);
 //    $routes->connect('/order/:id',['controller'=>'Orders','action'=>'detail']);
+
     $routes->connect('/order/:id',['controller'=>'DetailClient','action'=>'orderview']);
 
 

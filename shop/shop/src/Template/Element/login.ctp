@@ -1,5 +1,4 @@
-<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModal1"
-     aria-hidden="true">
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModal1">
     <div class="agilemodal-dialog modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

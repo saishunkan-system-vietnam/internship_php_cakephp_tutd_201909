@@ -38,7 +38,8 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Text <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="text" name="text" data-validate-linked="email" required="required" placeholder="Mô tả slider" class="form-control col-md-7 col-xs-12"  value="<?= $slider->text ?>">
+                                    <textarea id="ckeditor" name="text" required="required" placeholder="Nhập text" ><?php if (isset($slider->content)) echo $slider->content;?></textarea>
+
                                     <?php if (isset($err['text'])): ?>
                                         <?php foreach ($err['text'] as $item): ?>
                                             <div><?= $item ?></div>
@@ -84,3 +85,10 @@
     </div>
 </div>
 <!-- /page content -->
+<script src="<?php echo SITE_URL; ?>js/ckeditor/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('ckeditor');
+    CKEDITOR.replace('ckeditor1');
+    CKEDITOR.replace('ckeditor3');
+
+</script>

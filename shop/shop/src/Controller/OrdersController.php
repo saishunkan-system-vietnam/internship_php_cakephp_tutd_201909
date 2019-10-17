@@ -24,21 +24,100 @@ class OrdersController extends AppController
         $this->paginate = [
             'limit' => '5'
         ];
+        $order_done = count($this->Orders->find()->order(['id' => 'DESC'])->where(['status' => 1])->toArray());
+        $order_new = count($this->Orders->find()->where(['status' => 0])->toArray());
         $orders = $this->paginate($this->Orders->find()->order(['id' => 'DESC']));
+        $total=$order_done+$order_new;
+        $this->set(compact('order_done'));
+        $this->set(compact('order_new'));
+        $this->set(compact('total'));
         $this->set(compact('orders'));
+
     }
+
     public function search()
     {
         $search = $this->request->getQuery('q');
         $this->paginate = [
             'limit' => '5'
         ];
-
         $orders = $this->paginate($this->Orders->find()->where(function ($exp, $query) use ($search) {
-            return $exp->like('link', '%' . $search . '%');
+            return $exp->like('order_info', '%' . $search . '%');
+//                       ->like('total', '%' . $search . '%');
+//                ->like('username', '%' . $search . '%')
+//                ->like('email', '%' . $search . '%');
         }));
 //        $this->set('orders', $orders);
         $this->set(compact('orders'));
         $this->set('search', $search);
+    }
+
+    public function delete()
+    {
+        $id = $this->request->getParam('id');
+        $orders = $this->Orders->get($id);
+        $this->Orders->delete($orders);
+        return $this->redirect(['controller' => 'Orders', 'action' => 'index']);
+    }
+
+    public function status()
+    {
+
+        $id = $this->request->getParam('id');
+        $status = $this->Orders->get($id);
+        $status->status = 1;
+        if ($this->Orders->save($status)) {
+            $this->set(compact('status'));
+            return $this->redirect(['controller' => 'Orders', 'action' => 'index']);
+        } else {
+            $error = $status->getErrors();
+            $this->set('err', $error);
+        }
+        return $this->redirect(['controller' => 'Orders', 'action' => 'index']);
+    }
+
+    public function done()
+    {
+        $this->paginate = [
+            'limit' => '5'
+        ];
+        $order_done = $this->Orders->find()->where(['status' => 1])->toArray();
+        $order_new = $this->Orders->find()->where(['status' => 0])->toArray();
+        $orders = $this->paginate($this->Orders->find()->order(['id' => 'DESC']));
+        $total=count($order_done)+count($order_new);
+        $this->set(compact('order_done'));
+        $this->set(compact('total'));
+        $this->set(compact('order_new'));
+        $this->set(compact('orders'));
+    }
+
+    public function new()
+    {
+        $this->paginate = [
+            'limit' => '5'
+        ];
+        $order_done = $this->Orders->find()->where(['status' => 1])->toArray();
+        $order_new = $this->Orders->find()->where(['status' => 0])->toArray();
+        $orders = $this->paginate($this->Orders->find()->order(['id' => 'DESC']));
+        $total=count($order_done)+count($order_new);
+        $this->set(compact('order_done'));
+        $this->set(compact('total'));
+        $this->set(compact('order_new'));
+        $this->set(compact('orders'));
+    }
+    public function deletenew()
+    {
+        $id = $this->request->getParam('id');
+        $delete_new = $this->Orders->get($id);
+        $this->Orders->delete($delete_new);
+        return $this->redirect(['controller' => 'Orders', 'action' => 'new']);
+    }
+
+    public function deletedone()
+    {
+        $id = $this->request->getParam('id');
+        $delete_done = $this->Orders->get($id);
+        $this->Orders->delete($delete_done);
+        return $this->redirect(['controller' => 'Orders', 'action' => 'done']);
     }
 }

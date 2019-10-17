@@ -15,6 +15,9 @@
 
 namespace App\Controller;
 
+use Cake\Cache\Cache;
+
+use Cake\Http\Session\DatabaseSession;
 use App\Model\Entity\Slider;
 use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
@@ -47,7 +50,6 @@ class PagesController extends AppController
         $this->loadModel('Usersclient');
         $this->loadModel('Contact');
     }
-
     public function display(...$path)
     {
         $count = count($path);
@@ -76,41 +78,6 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
-
-
-    public function logo()
-    {
-        $logo = $this->Logo
-            ->find()
-            ->select('image', 'link')
-            ->where(['status' => 1]);
-        $this->set(compact('logo'));
-    }
-
-    public function slider()
-    {
-        //slider
-        $slider = $this->Slider
-            ->find()
-            ->select(['name', 'link', 'image', 'text', 'id'])
-            ->where(['status' => 1]);
-
-//        dd($slider->toArray());
-        $this->set(compact('slider'));
-    }
-
-    public function represent()
-    {
-        //Đại diện
-        $represent = $this->Represent
-            ->find()
-            ->select(['name', 'image', 'status'])
-            ->where(['status' => 1])
-            ->limit(3)
-            ->order(['id' => 'DESC']);
-        $this->set(compact('represent'));
-    }
-
     public function title()
     {
         //products-title
@@ -121,6 +88,17 @@ class PagesController extends AppController
             ->limit(4)
             ->order(['id' => 'DESC']);
         $this->set(compact('title'));
+    }
+
+    public function menuMini(){
+        $id=$this->request->getParam('id');
+//        dd($id);
+        $menuMinii=$this->Categories->find()
+            ->select(['id','name','parent_id','status'])
+            ->where(['status'=>1])
+            ->andWhere(['parent_id'=>0])->toArray();
+        $this->set(compact('menuMinii'));
+        dd($menuMinii);
     }
 
     public function products()
@@ -135,64 +113,6 @@ class PagesController extends AppController
         $this->set('products', $products);
     }
 
-    public function shopon()
-    {
-        //show shopon
-        $shopon = $this->Shopon->find()
-            ->select(['id', 'image', 'linkfb', 'linkyou', 'linkzalo', 'status'])
-            ->where(['status' => 1])
-            ->limit(12)
-            ->order(['id' => 'DESC'])->toArray();
-        $this->set('shopon', $shopon);
-    }
-
-    public function logolast()
-    {
-        //$logolast
-        $logolast = $this->Logolast->find()
-            ->select(['id', 'link', 'image', 'text', 'status'])
-            ->where(['status' => 1])
-            ->limit(1)
-            ->order(['id' => 'DESC'])->toArray();
-        $this->set('logolast', $logolast);
-    }
-
-    // dang ki trang client
-    public function users()
-    {
-        $users = $this->Usersclient->newEntity();
-        if ($this->request->is('post')) {
-            $input['name'] = $this->getRequest()->getData('name');
-            $input['email'] = $this->getRequest()->getData('email');
-            $input['password'] = md5($this->getRequest()->getData('password'));
-            $this->Usersclient->patchEntity($users, $input);
-            if ($this->Usersclient->save($users)) {
-                $this->set(compact('users'));
-                $this->Flash->success(__('ok'));
-            } else {
-                $error = $users->getErrors();
-                $this->set('err', $error);
-            }
-        }
-        $this->set(compact('users'));
-    }
-
-    //login client
-    public function loginclient()
-    {
-        if (isset($_POST['submit'])) {
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $userr = $this->Usersclient->find()
-                ->select(['id', 'name', 'email', 'password'])
-                ->where(['email' => $email])
-                ->orwhere(['password' => $password])
-                ->all()->toArray();
-            $showEmail = $userr[0];
-            $this->set('showEmail', $showEmail);
-        }
-    }
-
     public function index()
     {
         $this->logo();
@@ -204,5 +124,7 @@ class PagesController extends AppController
         $this->logolast();
         $this->users();
         $this->loginclient();
+        $this->menu();
+        $this->menuMini();
     }
 }

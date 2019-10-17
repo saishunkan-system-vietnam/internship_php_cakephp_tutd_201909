@@ -65,8 +65,7 @@
                             </div>
                         </form>
                         <p class="text-center mt-3">Already a member?
-                            <a href="#" data-toggle="modal" data-target="#exampleModal1" class="text-dark login_btn">
-                                Login Now</a>
+
                         </p>
                     </div>
                 </div>

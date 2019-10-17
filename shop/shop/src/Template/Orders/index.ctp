@@ -1,3 +1,4 @@
+
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
@@ -29,6 +30,10 @@
                         </button>
                     </p>
                 </form>
+                <a href="" style="background-color: #2196F3;float: right" class="badge badge-primary">Có <?php echo $total?> đơn hàng</a>
+                <a href="admin/orders/status/done" class="badge badge-danger" style="background-color: #2196F3;float: right">Có <?= $order_done; ?> đơn hàng đã xử lý</a>
+                <a href="admin/orders/status/new" class="badge badge-success" style="background-color: #a61717;float: right">Có <?= $order_new; ?> đơn hàng chưa xử lý</a>
+
                 <table class="table table-striped jambo_table bulk_action">
                     <thead>
                     <tr class="headings">
@@ -62,8 +67,9 @@
                                        value="<?php echo $orders->id ?>">
                             </td>
                             <td class=" "><?php echo $orders->id; ?></td>
-                            <?php $t = 0; ?>
+                            <?php $t = 1; ?>
                             <td class=" "><?php foreach (json_decode($orders->order_info) as $o): ?>
+
                                     <p style="color: black;font-weight: bold;font-size: 12px"><?php echo $t++; ?></p>
                                     <p><strong>Name</strong> :<?= $o->name ?></p>
                                     <p><strong>Price</strong> :<?= $o->sale ?></p>
@@ -81,15 +87,16 @@
                             <td class=" "><?php echo $orders->note; ?></td>
                             <td class="">
                                 <?php if ($orders->status == 0): ?>
-                                    <span style="color: red">Chưa xử lý</span>
+                                    <a href="/admin/orders/status/<?= $orders->id ?>"><span style="background-color: #a61717"
+                                                     class="badge badge-pill badge-danger">Chưa xử lý</span></a>
                                 <?php else: ?>
-                                    <span style="color: green">Đã xử lý</span>
+                                    <a href="/admin/orders/status/<?= $orders->id ?>"><span style="background-color: #2196F3"
+                                                     class="badge badge-pill badge-success">Đã xử lý</span></a>
                                 <?php endif; ?>
                             </td>
                             <td class=" last">
-                                <a href="/admin/logo/edit/<?= $orders->id ?>" class="badge badge-success"
-                                   style="background-color: #22dd99">Edit </a>
-                                <a href="/admin/logo/delete/<?= $orders->id ?>"
+                                <!--                            -->
+                                <a href="/admin/orders/delete/<?= $orders->id ?>"
                                    onclick="return confirm('Bạn có chắc chăn muốn xóa')" class="badge badge-danger"
                                    style="background-color: #a61717">Delete</a>
                             </td>
