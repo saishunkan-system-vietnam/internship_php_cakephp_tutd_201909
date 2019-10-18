@@ -56,6 +56,7 @@ class ProductsClientController extends AppController
         $this->loginclient();
         $this->productss();
         $this->menu();
+        $this->showMenu();
     }
 
 

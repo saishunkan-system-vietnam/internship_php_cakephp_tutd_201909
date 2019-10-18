@@ -45,6 +45,7 @@ class AppController extends Controller
             $this->set(compact('session'));
         }
     }
+
     /**
      * Initialization hook method.
      *
@@ -87,10 +88,10 @@ class AppController extends Controller
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
-        if ($this->request->getSession()->read('Auth.User')){
-            $this->set('logedIn',true);
-        }else{
-            $this->set('logedIn',false);
+        if ($this->request->getSession()->read('Auth.User')) {
+            $this->set('logedIn', true);
+        } else {
+            $this->set('logedIn', false);
         }
     }
 
@@ -195,23 +196,35 @@ class AppController extends Controller
         $this->redirect($this->referer());
     }
 
-    public function menu(){
 
-        $menu=$this->Categories->find()
-            ->select(['id','name','parent_id','status'])
-            ->where(['status'=>1])
-            ->andWhere(['parent_id'=>0]);
-        $this->set(compact('menu'));
-
-    }
     public function title()
     {
         $title = $this->Categories
             ->find()
             ->select(['id', 'name', 'parent_id', 'slug'])
             ->where(['status' => 1])
+            ->andWhere(['parent_id'=>0])
             ->limit(4)
             ->order(['id' => 'DESC']);
         $this->set(compact('title'));
+
+    }
+
+    public function menu()
+    {
+        $menu = $this->Categories->find()
+            ->select(['id', 'name', 'parent_id', 'status'])
+            ->where(['status' => 1])
+            ->andWhere(['parent_id' => 0]);
+        $this->set(compact('menu'));
+    }
+
+    public function showMenu()
+    {
+        $menu_new = $this->Categories->find()
+            ->select(['id', 'name', 'parent_id', 'status'])
+            ->where(['status' => 1])->toArray();
+        $this->set(compact('menu_new'));
+//        dd($menu_new);
     }
 }

@@ -110,6 +110,7 @@
                             </li>
                         </ul>
                     </div>
+<!--                    --><?php //dd($cart); ?>
                     <div class="col-md-8 address_form">
                         <h4>Billing Address</h4>
                         <form action="" method="post" class="creditly-card-form shopf-sear-headinfo_form">
@@ -163,6 +164,7 @@
         </div>
     </section>
 <?php else: ?>
+
     <p style="text-align: center;padding-bottom: 20px;word-spacing:2px">Quay về <a href="http://localhost:8765">Trang
-            chủ</a> để thêm sản phẩm vào giỏ hàng.</p>
+            chủ</a> để thêm sản phẩm vào giỏ hàng.<a href="">Xem sản phẩm đã mua.</a></p>
 <?php endif; ?>

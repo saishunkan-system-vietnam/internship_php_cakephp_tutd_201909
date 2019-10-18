@@ -136,6 +136,7 @@ class DetailClientController extends AppController
     public function viewCart()
     {
 //        $this->viewBuilder()->setLayout('cartfontend');
+//        dd($_SESSION);
         $this->logo();
         $this->slider();
         $this->represent();
@@ -145,6 +146,7 @@ class DetailClientController extends AppController
         $this->loginclient();
         $this->oders();
 //        $this->addToCart();
+        $this->showMenu();
 
         $cart = $this->getRequest()->getSession()->read('cart');
 //dd($cart);
@@ -257,9 +259,11 @@ class DetailClientController extends AppController
         $this->logolast();
         $this->users();
         $this->loginclient();
+
     }
     public function detail()
     {
+
         $this->logo();
         $this->slider();
         $this->represent();
@@ -273,5 +277,7 @@ class DetailClientController extends AppController
         $this->orderview();
         $this->oders();
         $this->menu();
+        $this->showMenu();
+
     }
 }

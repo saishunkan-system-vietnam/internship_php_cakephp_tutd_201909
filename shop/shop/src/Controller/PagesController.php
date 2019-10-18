@@ -50,6 +50,7 @@ class PagesController extends AppController
         $this->loadModel('Usersclient');
         $this->loadModel('Contact');
     }
+
     public function display(...$path)
     {
         $count = count($path);
@@ -78,27 +79,17 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
-    public function title()
-    {
-        //products-title
-        $title = $this->Categories
-            ->find()
-            ->select(['id', 'name', 'parent_id', 'slug'])
-            ->where(['status' => 1])
-            ->limit(4)
-            ->order(['id' => 'DESC']);
-        $this->set(compact('title'));
-    }
 
-    public function menuMini(){
-        $id=$this->request->getParam('id');
+    public function menuMini()
+    {
+        $id = $this->request->getParam('id');
 //        dd($id);
-        $menuMinii=$this->Categories->find()
-            ->select(['id','name','parent_id','status'])
-            ->where(['status'=>1])
-            ->andWhere(['parent_id'=>0])->toArray();
+        $menuMinii = $this->Categories->find()
+            ->select(['id', 'name', 'parent_id', 'status'])
+            ->where(['status' => 1])
+            ->andWhere(['parent_id' => 0])->toArray();
         $this->set(compact('menuMinii'));
-        dd($menuMinii);
+//        dd($menuMinii);
     }
 
     public function products()
@@ -126,5 +117,6 @@ class PagesController extends AppController
         $this->loginclient();
         $this->menu();
         $this->menuMini();
+        $this->showMenu();
     }
 }

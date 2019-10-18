@@ -118,7 +118,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/detailclient/update/', ['controller' => 'DetailClient', 'action' => 'upcatecart']);
     $routes->connect('/pages/product/', ['controller' => 'ProductsClient', 'action' => 'product']);
     $routes->connect('/cart/bills/:id', ['controller'=>'DetailClient','action'=>'bills']);
-//    $routes->connect('/order/:id',['controller'=>'Orders','action'=>'detail']);
+    $routes->connect('/pages/see-orders/:id',['controller'=>'SeeOrder','action'=>'index']);
 
     $routes->connect('/order/:id',['controller'=>'DetailClient','action'=>'orderview']);
 

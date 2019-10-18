@@ -49,5 +49,6 @@ class ContactClientController extends AppController
         $this->loginclient();
         $this->contactt();
         $this->menu();
+        $this->showMenu();
     }
 }
