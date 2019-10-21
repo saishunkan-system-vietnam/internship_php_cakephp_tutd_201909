@@ -176,6 +176,7 @@ class AppController extends Controller
         if (isset($_POST['submit'])) {
             $email = $_POST['email'];
             $password = $_POST['password'];
+
             $userr = $this->Usersclient->find()
                 ->select(['id', 'name', 'email', 'password'])
                 ->where(['email' => $email])
@@ -185,6 +186,7 @@ class AppController extends Controller
             $this->getRequest()->getSession()->write('dataUser', $dataUser);
         }
         $dataUserLogin = $this->getRequest()->getSession()->read('dataUser');
+//        dd($dataUserLogin['email']);
         $this->set('dataUserLogin', $dataUserLogin);
     }
 
