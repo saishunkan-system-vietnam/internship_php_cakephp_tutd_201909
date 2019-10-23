@@ -1,4 +1,5 @@
 <!-- sign up Modal -->
+<!-- include the BotDetect layout stylesheet -->
 <div class="modal fade" id="myModal_btn" tabindex="-1" role="dialog" aria-labelledby="myModal_btn" aria-hidden="true">
     <div class="agilemodal-dialog modal-dialog" role="document">
         <div class="modal-content">
@@ -18,7 +19,7 @@
                             <div class="form-group">
                                 <label for="recipient-name1" class="col-form-label">Your Name</label>
                                 <input type="text" class="form-control" placeholder=" " name="name" id="recipient-name1"
-                                        value="<?php if (isset($users->name)) echo $users->name; ?>">
+                                       value="<?php if (isset($users->name)) echo $users->name; ?>">
                                 <?php if (isset($err['name'])): ?>
                                     <?php foreach ($err['name'] as $item): ?>
                                         <div><?= $item ?></div>
@@ -65,7 +66,6 @@
                             </div>
                         </form>
                         <p class="text-center mt-3">Already a member?
-
                         </p>
                     </div>
                 </div>

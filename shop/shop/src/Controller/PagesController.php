@@ -13,10 +13,15 @@
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
 
+namespace App\Controller\Component;
+
 namespace App\Controller;
 
-use Cake\Cache\Cache;
 
+use App\Controller\Component\ToolComponent;
+use Cake\Controller\Component;
+use Cake\Cache\Cache;
+use Cake\Datasource\EntityInterface;
 use Cake\Http\Session\DatabaseSession;
 use App\Model\Entity\Slider;
 use Cake\Core\Configure;
@@ -24,6 +29,8 @@ use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use Cake\Auth\DefaultPasswordHasher;
+use Symfony\Component\VarDumper\Dumper\DataDumperInterface;
+use Cake\Mailer\MailerAwareTrait;
 
 /**
  * Static content controller
@@ -34,6 +41,10 @@ use Cake\Auth\DefaultPasswordHasher;
  */
 class PagesController extends AppController
 {
+    use MailerAwareTrait;
+    public $components = [
+        'Tool',
+    ];
 
     public function initialize()
     {
@@ -102,6 +113,78 @@ class PagesController extends AppController
             ->limit(8)
             ->order(['id' => 'ASC'])->toArray();
         $this->set('products', $products);
+    }
+
+    public function forgot()
+    {
+        $this->viewBuilder()->setLayout('forgot');
+        $this->logo();
+        $this->logolast();
+//        $email = $this->Usersclient->find()
+//            ->select(['id', 'name', 'email', 'password'])->toArray();
+//        dd($emaill);
+        $email = $this->Usersclient->newEntity();
+//        dd($this->getRequest()->getData(['email']));
+        if ($this->request->is('post')) {
+            $user = $this->Usersclient->findByEmail($this->getRequest()->getData(['email']))->first();
+//            dd($user->email);
+//            dd($user);
+            if (!empty($user)) {
+//                dd(1);
+
+                $code = $this->getRequest()->getData('code');
+//                dd($code);
+                //tao link xac thuc
+//                $link_confirm = 'http://localhost:8765/confirm/' . $code;
+                //luu ma xax nhan vao trong csdl
+                $id = $this->Usersclient->id = $user['id'];
+                $code = $this->Tool->generate_code($id);
+//                dd( $this->Usersclient->id);
+                $query = $this->Usersclient->query();
+                $query->update()
+                    ->set([
+                        'code' => $code,
+                    ])
+                    ->where(['id' => $this->Usersclient->id])
+                    ->execute();
+//                dd($query);
+//                dd($code);
+                $this->getMailer('Usersclient')->send('testEmail', [$user]);
+//                dd($this->getMailer('Usersclient')->send('testEmail',[$user]));
+//                $this->Flash->success("Vui lòng kiểm tra Email" . $link_confirm);
+            } else {
+//                echo "Email ban nhập không đúng";
+                $this->Flash->error("Email này chưa được đăng kí.Vui lòng nhập đúng Email");
+            }
+        }
+
+    }
+
+    //xac nhan mat khau
+    public function confirm($code = null)
+    {
+//        dd($code);
+        $this->viewBuilder()->setLayout('forgot');
+        $this->logo();
+        $this->logolast();
+        $confirm = false;
+//        dd($confirm);
+//        dd($code);
+        if (!empty($code)) {
+            $user = $this->Usersclient->findByCode($code);
+            $codee = $this->request->getParam('code');
+            $password=md5($this->getRequest()->getData('password'));
+            if (!empty($user)) {
+                $confirm = true;
+                $query = $this->Usersclient->query();
+                $query->update()
+                    ->set(['password' => $password])
+                    ->where(['code'=>$codee])
+                    ->execute();
+//                $this->redirect('http://localhost:8765');
+            }
+        }
+        $this->set('confirm', $confirm);
     }
 
     public function index()

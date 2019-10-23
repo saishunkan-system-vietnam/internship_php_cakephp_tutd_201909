@@ -54,12 +54,12 @@ class UsersclientTable extends Table
         $validator
             ->scalar('name')
             ->maxLength('name', 255)
-            ->requirePresence('name', 'create')
+//            ->requirePresence('name', 'create')
             ->notEmptyString('name');
 
         $validator
             ->email('email')
-            ->requirePresence('email', 'create')
+//            ->requirePresence('email', 'create')
             ->notEmptyString('email');
 
         $validator
@@ -69,8 +69,9 @@ class UsersclientTable extends Table
             ->notEmptyString('password');
 
         $validator
-            ->dateTime('update_at')
-            ->allowEmptyDateTime('update_at');
+            ->scalar('code')
+            ->maxLength('code', 255)
+            ->allowEmptyString('code');
 
         return $validator;
     }

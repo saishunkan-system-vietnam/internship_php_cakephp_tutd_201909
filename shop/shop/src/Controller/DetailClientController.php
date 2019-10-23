@@ -223,6 +223,7 @@ class DetailClientController extends AppController
         $total = $this->getRequest()->getSession()->read('total');
 //        dd($total);
         $order = $this->Orders->newEntity();
+//        dd($order);
         if ($this->request->is('post')) {
             $input['username'] = $this->getRequest()->getData('username');
             $input['phone'] = $this->getRequest()->getData('phone');

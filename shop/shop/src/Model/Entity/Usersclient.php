@@ -10,6 +10,7 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property string $email
  * @property string $password
+ * @property string|null $code
  * @property \Cake\I18n\FrozenTime|null $created
  * @property \Cake\I18n\FrozenTime|null $update_at
  */
@@ -28,6 +29,7 @@ class Usersclient extends Entity
         'name' => true,
         'email' => true,
         'password' => true,
+        'code' => true,
         'created' => true,
         'update_at' => true
     ];

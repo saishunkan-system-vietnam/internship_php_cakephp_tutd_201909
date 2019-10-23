@@ -75,7 +75,7 @@ try {
 } catch (\Exception $e) {
     exit($e->getMessage() . "\n");
 }
-
+//Plugin::load('CakeCaptcha', ['routes' => true]);
 /*
  * Load an environment local configuration file.
  * You can use a file like app_local.php to provide local overrides to your
@@ -174,6 +174,7 @@ ServerRequest::addDetector('tablet', function ($request) {
 
     return $detector->isTablet();
 });
+//Plugin::load('CakeCaptcha', ['routes' => true]);
 
 /*
  * Enable immutable time objects in the ORM.

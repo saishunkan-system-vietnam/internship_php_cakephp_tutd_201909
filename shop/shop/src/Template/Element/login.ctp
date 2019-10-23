@@ -26,6 +26,9 @@
                             <div class="right-w3l">
                                 <input type="submit" class="form-control" value="Login" name="submit">
                             </div>
+                            <div>
+                                <a href="/forgot" style="padding-top: 15px;font-size: 12px;padding-left: 40%">Quên mât khẩu</a>
+                            </div>
                         </form>
                     </div>
                 </div>

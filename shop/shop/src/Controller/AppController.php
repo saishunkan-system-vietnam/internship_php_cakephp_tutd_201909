@@ -170,6 +170,8 @@ class AppController extends Controller
         $this->set(compact('users'));
     }
 
+    //lam ma capcha khi dang ki
+
     //login client
     public function loginclient()
     {
@@ -185,6 +187,7 @@ class AppController extends Controller
             $dataUser = $userr[0];
             $this->getRequest()->getSession()->write('dataUser', $dataUser);
         }
+//        dd($dataUser);
         $dataUserLogin = $this->getRequest()->getSession()->read('dataUser');
 //        dd($dataUserLogin['email']);
         $this->set('dataUserLogin', $dataUserLogin);
@@ -205,7 +208,7 @@ class AppController extends Controller
             ->find()
             ->select(['id', 'name', 'parent_id', 'slug'])
             ->where(['status' => 1])
-            ->andWhere(['parent_id'=>0])
+            ->andWhere(['parent_id' => 0])
             ->limit(4)
             ->order(['id' => 'DESC']);
         $this->set(compact('title'));
