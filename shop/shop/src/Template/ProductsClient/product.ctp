@@ -11,21 +11,21 @@
         <li class="breadcrumb-item active" aria-current="page">Women</li>
     </ol>
 </nav>
-
 <div class="fh-container mx-auto">
     <div class="row my-lg-5 mb-5">
 
         <div class="col-lg-9 mt-lg-0 mt-5 right-product-grid" style="margin-left: 210px">
             <!-- card group  -->
             <div class="card-group">
-                <?php foreach ($productss as $pr):?>
+                <?php foreach ($productss as $pr): ?>
                     <div class="col-lg-3 col-sm-6 p-0">
                         <div class="card product-men p-3">
                             <div class="men-thumb-item">
                                 <img src="<?= $pr['image'] ?>" alt="img" class="card-img-top" style="height: 350px">
                                 <div class="men-cart-pro">
                                     <div class="inner-men-cart-pro">
-                                        <a href="/pages/detail/<?= $pr['id'] ?>" class="link-product-add-cart">Quick View</a>
+                                        <a href="/pages/detail/<?= $pr['id'] ?>" class="link-product-add-cart">Quick
+                                            View</a>
                                     </div>
                                 </div>
                             </div>
@@ -34,8 +34,8 @@
                             <div class="card-body  py-3 px-2">
                                 <h5 class="card-title text-capitalize"><?php echo $pr['product_name'] ?></h5>
                                 <div class="card-text d-flex justify-content-between">
-                                    <p class="text-dark font-weight-bold"><?php echo $pr['sale']?></p>
-                                    <p class="line-through"><?php echo $pr['price']?></p>
+                                    <p class="text-dark font-weight-bold"><?php echo number_format($pr['sale'], 2, ',', ' ') ?></p>
+                                    <p class="line-through"><?php echo number_format($pr['price'], 2, ',', ' ') ?></p>
                                 </div>
                             </div>
                             <!-- card footer -->
@@ -54,8 +54,6 @@
                         </div>
                     </div>
                 <?php endforeach; ?>
-
-
             </div>
         </div>
     </div>

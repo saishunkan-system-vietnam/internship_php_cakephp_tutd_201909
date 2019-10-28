@@ -119,12 +119,15 @@ class AppController extends Controller
     public function represent()
     {
         //Đại diện
+//        dd($title);
+////        dd($cate['id']);
         $represent = $this->Represent
             ->find()
             ->select(['name', 'image', 'status'])
             ->where(['status' => 1])
             ->limit(3)
-            ->order(['id' => 'DESC']);
+            ->order(['id' => 'DESC'])->toArray();
+//        dd($represent);
         $this->set(compact('represent'));
     }
 
@@ -133,7 +136,9 @@ class AppController extends Controller
         //show shopon
         $shopon = $this->Shopon->find()
             ->select(['id', 'image', 'linkfb', 'linkyou', 'linkzalo', 'status'])
-            ->where(['status' => 1])
+            ->where([
+                'status' => 1,
+            ])
             ->limit(12)
             ->order(['id' => 'DESC'])->toArray();
         $this->set('shopon', $shopon);
@@ -201,7 +206,6 @@ class AppController extends Controller
         $this->redirect($this->referer());
     }
 
-
     public function title()
     {
         $title = $this->Categories
@@ -210,9 +214,9 @@ class AppController extends Controller
             ->where(['status' => 1])
             ->andWhere(['parent_id' => 0])
             ->limit(4)
-            ->order(['id' => 'DESC']);
+            ->order(['id' => 'DESC'])->toArray();
+//        dd($title);
         $this->set(compact('title'));
-
     }
 
     public function menu()

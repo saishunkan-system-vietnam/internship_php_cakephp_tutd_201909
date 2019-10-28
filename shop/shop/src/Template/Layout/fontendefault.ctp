@@ -179,20 +179,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //end-smooth-scrolling -->
 <!-- smooth-scrolling-of-move-up -->
 <script>
-    $(document).ready(function () {
-        /*
-        var defaults = {
-            containerID: 'toTop', // fading element id
-            containerHoverID: 'toTopHover', // fading element hover id
-            scrollSpeed: 1200,
-            easingType: 'linear'
-        };
-        */
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
 
-        $().UItoTop({
-            easingType: 'easeOutQuart'
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 1000);
         });
-
     });
 </script>
 <!--<script src="js/SmoothScroll.min.js"></script>-->

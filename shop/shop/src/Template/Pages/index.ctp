@@ -7,9 +7,9 @@
             <ul id="clothing-nav" class="nav nav-tabs tabs-style-line" role="tablist">
                 <?php foreach ($title as $title): ?>
                     <li class="nav-item">
-<!--                        --><?php //dd($title['id']); ?>
-                        <a class="nav-link active" href="/pages/product/<?php $title['id'] ?>"
-                         ><?php echo $title['name'] ?></a>
+                        <!--                        --><?php //dd($title['id']); ?>
+                        <a class="nav-link active" href="/pages/product/<?php echo $title['id'] ?>"
+                        ><?php echo $title['name'] ?></a>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -35,8 +35,8 @@
                                 <div class="card-body  py-3 px-2">
                                     <h5 class="card-title text-capitalize"><?php echo $products['product_name'] ?></h5>
                                     <div class="card-text d-flex justify-content-between">
-                                        <p class="text-dark font-weight-bold">$<?php echo $products['sale'] ?></p>
-                                        <p class="line-through">$<?php echo $products['price'] ?></p>
+                                        <p class="text-dark font-weight-bold"><?php echo number_format($products['sale'], '2', ',', ',') ?></p>
+                                        <p class="line-through"><?php echo number_format($products['price'], '2', ',', ',') ?></p>
                                     </div>
                                 </div>
                                 <!-- card footer -->

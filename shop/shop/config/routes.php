@@ -106,9 +106,9 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'index', 'home']);
     $routes->connect('/pages/detail/:id', ['controller' => 'DetailClient', 'action' => 'detail']);
-    $routes->connect('/pages/about', ['controller' => 'AboutClient', 'action' => 'index']);
-    $routes->connect('/pages/contact', ['controller' => 'ContactClient', 'action' => 'contact']);
-    $routes->connect('/pages/blog', ['controller' => 'BlogClient', 'action' => 'blog']);
+    $routes->connect('/about', ['controller' => 'AboutClient', 'action' => 'index']);
+    $routes->connect('/contact', ['controller' => 'ContactClient', 'action' => 'contact']);
+    $routes->connect('/blog', ['controller' => 'BlogClient', 'action' => 'blog']);
     $routes->connect('/pages/logout/:id', ['controller' => 'Pages', 'action' => 'logout']);
     $routes->connect('/pages/article_details/:id', ['controller' => 'ArticlentDetails', 'action' => 'index']);
     $routes->connect('/forgot', ['controller' => 'Pages', 'action' => 'forgot']);
@@ -118,7 +118,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/cart', ['controller' => 'DetailClient', 'action' => 'viewCart']);
     $routes->connect('/detailclient/remove/:id', ['controller' => 'DetailClient', 'action' => 'remove']);
     $routes->connect('/detailclient/update/', ['controller' => 'DetailClient', 'action' => 'upcatecart']);
-    $routes->connect('/pages/product/', ['controller' => 'ProductsClient', 'action' => 'product']);
+    $routes->connect('/pages/product/:categories_id', ['controller' => 'ProductsClient', 'action' => 'product']);
     $routes->connect('/cart/bills/:id', ['controller' => 'DetailClient', 'action' => 'bills']);
     $routes->connect('/pages/see-orders/:id', ['controller' => 'SeeOrder', 'action' => 'index']);
 

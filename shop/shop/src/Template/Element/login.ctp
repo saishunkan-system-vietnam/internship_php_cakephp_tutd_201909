@@ -10,10 +10,10 @@
             <div class="modal-body  pt-3 pb-5 px-sm-5">
                 <div class="row">
                     <div class="col-md-6 align-self-center">
-                        <img src="images/p3.png" class="img-fluid" alt="login_image"/>
+                        <img src="images/1.jpg" class="img-fluid" alt="login_image"/>
                     </div>
                     <div class="col-md-6">
-                        <form action="#" method="post">
+                        <form action="" method="post">
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Email</label>
                                 <input type="text" class="form-control" placeholder=" " name="email" id="recipient-name"

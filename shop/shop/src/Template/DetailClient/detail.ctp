@@ -80,7 +80,7 @@ use Cake\Http\Session\DatabaseSession;
                     </ul>
                     <div class="clearfix"></div>
                     <h6>
-                        $<?php echo $products['sale'] ?></h6>
+                        <?php echo number_format($products['sale'],'3',',',',') ?></h6>
                 </div>
                 <div class="desc_single">
                     <h5>Mô tả</h5>

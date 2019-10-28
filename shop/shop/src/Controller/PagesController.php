@@ -109,9 +109,10 @@ class PagesController extends AppController
         $products = $this->Products->find()
             ->select(['id', 'product_name', 'image', 'price', 'sale', 'description', 'size', 'slug', 'categories_id', 'status'])
             ->where(['status' => 1])
-            ->andwhere(['categories_id' => 24])
+            ->andwhere(['categories_id' => 46])
             ->limit(8)
             ->order(['id' => 'ASC'])->toArray();
+//        dd($products);
         $this->set('products', $products);
     }
 
@@ -120,71 +121,73 @@ class PagesController extends AppController
         $this->viewBuilder()->setLayout('forgot');
         $this->logo();
         $this->logolast();
+        $this->showMenu();
 //        $email = $this->Usersclient->find()
 //            ->select(['id', 'name', 'email', 'password'])->toArray();
 //        dd($emaill);
-        $email = $this->Usersclient->newEntity();
+//        $email = $this->Usersclient->newEntity();
 //        dd($this->getRequest()->getData(['email']));
         if ($this->request->is('post')) {
-            $user = $this->Usersclient->findByEmail($this->getRequest()->getData(['email']))->first();
-//            dd($user->email);
-//            dd($user);
-            if (!empty($user)) {
+            $email = $this->getRequest()->getData(['email']);
+            $user = $this->Usersclient->find()->toArray();
+            $getEmail=array_column($user, 'email');
+//            dd(in_array($email,$getEmail));
+//            die();
+            if (!empty($email) and in_array($email,$getEmail)) {
 //                dd(1);
 
-                $code = $this->getRequest()->getData('code');
+//                $code = $this->getRequest()->getData('code');
 //                dd($code);
                 //tao link xac thuc
 //                $link_confirm = 'http://localhost:8765/confirm/' . $code;
                 //luu ma xax nhan vao trong csdl
-                $id = $this->Usersclient->id = $user['id'];
-                $code = $this->Tool->generate_code($id);
-//                dd( $this->Usersclient->id);
+                $user = $this->Usersclient->find()->where(['email' => $email])->first();
+                $code = $this->Tool->generate_code($user->id);
                 $query = $this->Usersclient->query();
                 $query->update()
                     ->set([
                         'code' => $code,
                     ])
-                    ->where(['id' => $this->Usersclient->id])
+                    ->where(['id' => $user->id])
                     ->execute();
-//                dd($query);
-//                dd($code);
                 $this->getMailer('Usersclient')->send('testEmail', [$user]);
 //                dd($this->getMailer('Usersclient')->send('testEmail',[$user]));
-//                $this->Flash->success("Vui lòng kiểm tra Email" . $link_confirm);
+//                $this->Flash->success("Vui lòng kiểm tra Email",['forgot']);
+                $this->Flash->success(__('Vui lòng kiêm tra Email của bạn', ['key' => 'forgot']));
             } else {
-//                echo "Email ban nhập không đúng";
+                echo "Email ban nhập không đúng";
                 $this->Flash->error("Email này chưa được đăng kí.Vui lòng nhập đúng Email");
             }
         }
-
     }
 
     //xac nhan mat khau
     public function confirm($code = null)
     {
-//        dd($code);
         $this->viewBuilder()->setLayout('forgot');
         $this->logo();
         $this->logolast();
-        $confirm = false;
-//        dd($confirm);
-//        dd($code);
-        if (!empty($code)) {
-            $user = $this->Usersclient->findByCode($code);
-            $codee = $this->request->getParam('code');
-            $password=md5($this->getRequest()->getData('password'));
-            if (!empty($user)) {
-                $confirm = true;
-                $query = $this->Usersclient->query();
-                $query->update()
-                    ->set(['password' => $password])
-                    ->where(['code'=>$codee])
-                    ->execute();
-//                $this->redirect('http://localhost:8765');
+        $this->showMenu();
+        $user = $this->Usersclient->find()->where(['code' => $code])->first();
+        if (isset($_POST['submit'])) {
+            $pass = $_POST['repassword'];
+            $password = md5($this->getRequest()->getData('password'));
+            if ($password == md5($pass)) {
+                if ($this->request->is('post')) {
+                    $query = $this->Usersclient->query();
+                    $query->update()
+                        ->set([
+                            'password' => $password,
+                            'code' => ''
+                        ])
+                        ->where(['id' => $user->id])
+                        ->execute();
+                }
+            } else {
+                echo "2 mật khẩu phải trùng nhau!Vui lòng nhập lại.";
             }
         }
-        $this->set('confirm', $confirm);
+        $this->set('code', $code);
     }
 
     public function index()

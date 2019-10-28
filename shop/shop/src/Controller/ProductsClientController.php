@@ -36,9 +36,14 @@ class ProductsClientController extends AppController
 
     public function productss()
     {
+        $cate=$this->getRequest()->getParam('categories_id');
+//        dd($cate);
         $productss = $this->Products->find()
             ->select(['id','image', 'product_name', 'price', 'sale', 'description', 'size', 'slug', 'status', 'categories_id'])
-            ->where(['status' => 1])
+            ->where([
+                'status' => 1,
+                'categories_id'=>$cate
+            ])
             ->toArray();
 //        dd($productss);
         $this->set(compact('productss'));
